@@ -169,20 +169,16 @@
     <h2>소중한 당신을 초대합니다</h2>
   </header>
 
-  <div class="slideshow" aria-label="사진 슬라이드쇼">
-    <img src="image1.jpg" alt="신랑 신부가 문을 열고 나오는 모습" class="slide active" />
-    <img src="image2.jpg" alt="창가에 앉은 신부 모습" class="slide" />
-    <img src="image3.jpg" alt="스윙댄스 장면" class="slide" />
-    <img src="image4.jpg" alt="거울 앞에 앉은 신부" class="slide" />
-    <img src="image5.jpg" alt="흑백 베일 사진" class="slide" />
-    <img src="image6.jpg" alt="신부 자켓 사진" class="slide" />
-    <img src="image7.jpg" alt="신부 초점 맞춘 사진" class="slide" />
-    <img src="image8.jpg" alt="신랑 초점 맞춘 사진" class="slide" />
+  <div class="slideshow">
+    <img src="image1.jpg" class="slide active" />
+    <img src="image2.jpg" class="slide" />
+    <img src="image3.jpg" class="slide" />
+    <img src="image4.jpg" class="slide" />
   </div>
 
   <div class="controls">
-    <button id="prevBtn" aria-label="이전 사진 보기">← 이전</button>
-    <button id="nextBtn" aria-label="다음 사진 보기">다음 →</button>
+    <button id="prevBtn">← 이전</button>
+    <button id="nextBtn">다음 →</button>
   </div>
 
   <div class="message">
@@ -199,27 +195,56 @@
 
   <div class="info">
     신랑 계좌번호 : 신한은행 110-442-634305<br />
-    신랑 전화번호 : 010-5360-1111<br /><br />
-    신부 계좌번호 :<br />
-    신부 전화번호 : 010-2691-0852
+    신부 계좌번호 : 국민은행 123-4567-8901
   </div>
 
-  <div class="guestbook" aria-label="방명록 작성">
+  <div class="guestbook">
     <h3>방명록</h3>
-    <input type="text" id="guestName" placeholder="이름을 입력해주세요" aria-label="이름 입력" />
-    <textarea id="guestMessage" placeholder="따뜻한 한마디를 남겨주세요..." rows="5" aria-label="메시지 입력"></textarea>
-    <button class="guestbook-btn" onclick="saveMessage()">남기기</button>
-    <div id="saveStatus" role="alert" aria-live="polite"></div>
+    <input type="text" id="guestName" placeholder="이름을 입력해주세요" />
+    <textarea id="guestMessage" placeholder="따뜻한 한마디를 남겨주세요..." rows="5"></textarea>
+    <button class="guestbook-btn" onclick="sendEmail()">남기기</button>
+    <div id="saveStatus"></div>
   </div>
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- EmailJS v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    (function() {
-      // 본인 EmailJS Public Key로 바꿔주세요
-      emailjs.init("j45fhTJnH_AagnHb3");
-    })();
+    emailjs.init("j45fhTJnH_AagnHb3"); // ✅ 당신의 Public Key
 
+    function sendEmail() {
+      const name = document.getElementById("guestName").value.trim();
+      const message = document.getElementById("guestMessage").value.trim();
+      const status = document.getElementById("saveStatus");
+
+      if (!name || !message) {
+        alert("이름과 메시지를 모두 입력해주세요.");
+        return;
+      }
+
+      status.style.color = "black";
+      status.textContent = "전송 중입니다...";
+
+      const params = {
+        name: name,
+        message: message
+      };
+
+      emailjs.send("service_o08gz76", "template_b2sx5qf", params)
+        .then(() => {
+          document.getElementById("guestName").value = "";
+          document.getElementById("guestMessage").value = "";
+          status.style.color = "green";
+          status.textContent = "전송되었습니다. 감사합니다!";
+        })
+        .catch((error) => {
+          console.error("전송 실패:", error);
+          status.style.color = "red";
+          status.textContent = "전송 실패. 다시 시도해주세요.";
+        });
+    }
+  </script>
+
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
       const prevBtn = document.getElementById('prevBtn');
@@ -260,33 +285,6 @@
       showSlide(current);
       timer = setInterval(nextSlide, 5000);
     });
-
-    function saveMessage() {
-      const name = document.getElementById("guestName").value.trim();
-      const message = document.getElementById("guestMessage").value.trim();
-      const status = document.getElementById("saveStatus");
-
-      if (!name || !message) {
-        alert("이름과 메시지를 모두 입력해주세요.");
-        return;
-      }
-
-      status.style.color = "black";
-      status.textContent = "전송 중입니다...";
-
-      // serviceID, templateID는 EmailJS에서 만든 것에 맞게 바꿔주세요.
-      emailjs.send("service_wubzmhj", "template_b2sx5qf", {name: "...", message: "..."}).then(function(response) {
-        document.getElementById("guestName").value = "";
-        document.getElementById("guestMessage").value = "";
-        status.style.color = "green";
-        status.textContent = "이메일로 전송되었습니다. 감사합니다!";
-        console.log("SUCCESS:", response);
-      }, function(error) {
-        status.style.color = "red";
-        status.textContent = "전송 실패. 다시 시도해주세요.";
-        console.error("FAILED:", error);
-      });
-    }
   </script>
 </body>
 </html>
