@@ -234,7 +234,7 @@
       status.textContent = "전송 중입니다...";
       button.disabled = true;
 
-      fetch("https://script.google.com/macros/s/AKfycbyvN0Rwsh9ArmSOqMdznFw6W6nPQPEMD2dq8tepJH6TgFODZTqS1RBd8j4ivfC4K-g/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwONGV_HFUgrNvWPaeSf2S-09cfRXQiCbXUqDDHCL5k8i15clu-3hnRuOglcUTDUz7u/exec", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
