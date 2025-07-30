@@ -275,10 +275,7 @@
       status.textContent = "전송 중입니다...";
 
       // serviceID, templateID는 EmailJS에서 만든 것에 맞게 바꿔주세요.
-      emailjs.send("service_wubzmhj", "template_b2sx5qf", {
-        name: name,
-        message: message
-      }).then(function(response) {
+      emailjs.send("service_wubzmhj", "template_b2sx5qf", {name: "...", message: "..."}).then(function(response) {
         document.getElementById("guestName").value = "";
         document.getElementById("guestMessage").value = "";
         status.style.color = "green";
