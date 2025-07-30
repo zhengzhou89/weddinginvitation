@@ -179,7 +179,7 @@
     <img src="image7.jpg" class="slide" />
     <img src="image8.jpg" class="slide" />
     <img src="image9.jpg" class="slide" />
-    </div>
+  </div>
 
   <div class="controls">
     <button id="prevBtn">← 이전</button>
@@ -217,7 +217,7 @@
   <!-- EmailJS v4 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    emailjs.init("j45fhTJnH_AagnHb3"); // ✅ 당신의 Public Key
+    emailjs.init("j45fhTJnH_AagnHb3"); // Public Key
 
     function sendEmail() {
       const name = document.getElementById("guestName").value.trim();
@@ -237,7 +237,7 @@
         message: message
       };
 
-      emailjs.send("service_o08gz76", "template_b2sx5qf", params)
+      emailjs.send("service_wubzmhj", "template_b2sx5qf", params)
         .then(() => {
           document.getElementById("guestName").value = "";
           document.getElementById("guestMessage").value = "";
