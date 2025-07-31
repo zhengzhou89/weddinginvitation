@@ -188,17 +188,30 @@
       100% { transform: scale(1); }
     }
 
+    /* 모바일 화면 글씨 크기 조정 */
     @media (max-width: 768px) {
       .slideshow { height: 300px; }
+      header h1 { font-size: 1.8rem; }
+      header h2, .date, .info { font-size: 1.3rem; }
+      #dday { font-size: 1.4rem; }
+      .copy-btn, .toggle-account-btn {
+        font-size: 1rem;
+      }
+      .message {
+        font-size: 1.1rem;
+      }
     }
 
     @media (max-width: 480px) {
       .slideshow { height: 200px; }
-      header h1 { font-size: 1.4rem; }
-      header h2, .date, .info { font-size: 1.1rem; }
-      #dday { font-size: 1.5rem; }
+      header h1 { font-size: 1.6rem; }
+      header h2, .date, .info { font-size: 1.2rem; }
+      #dday { font-size: 1.3rem; }
       .copy-btn, .toggle-account-btn {
         font-size: 0.95rem;
+      }
+      .message {
+        font-size: 1rem;
       }
     }
   </style>
