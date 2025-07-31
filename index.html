@@ -15,8 +15,8 @@
       margin: 0;
       padding: 0 1rem;
       font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
-      background: #f3e9dc; /* 따뜻한 크림빛 배경 */
-      color: #4b382a; /* 짙은 갈색 텍스트 */
+      background: #f3e9dc;
+      color: #4b382a;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,24 +25,28 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
+
     header {
       margin-top: 40px;
       animation: slideDown 1.5s ease-out;
     }
+
     header h1 {
       font-family: 'Nanum Gothic', sans-serif;
       font-weight: 600;
-      color: #7f4f24; /* 주황빛 갈색 */
+      color: #7f4f24;
       font-size: clamp(1.8rem, 6vw, 2.5rem);
       margin-bottom: 0.5rem;
     }
+
     header h2 {
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 500;
       color: #8c5a2e;
-      font-size: clamp(1.5rem, 5vw, 1.8rem); /* 글씨 크기 더 키움 */
+      font-size: clamp(1.5rem, 5vw, 1.8rem);
       margin-bottom: 2rem;
     }
+
     .slideshow {
       position: relative;
       width: 90%;
@@ -54,6 +58,7 @@
       margin-bottom: 2rem;
       background: #f9f1e7;
     }
+
     .slide {
       position: absolute;
       top: 0; left: 0;
@@ -67,16 +72,23 @@
       border-radius: 16px;
       user-select: none;
     }
+
     .slide.active {
       opacity: 1;
       z-index: 1;
     }
+
     .message,
     .info,
-    .guestbook,
-    #accountInfo {
+    #accountInfo,
+    .date {
+      width: 90%;
       max-width: 600px;
-      width: 100%;
+    }
+
+    .message,
+    .info,
+    #accountInfo {
       font-size: 1.05rem;
       line-height: 1.9;
       background: #fff5e6;
@@ -89,6 +101,7 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 400;
     }
+
     .date {
       font-size: clamp(1.2rem, 5vw, 1.5rem);
       margin-top: 2rem;
@@ -99,6 +112,7 @@
       padding: 0;
       font-family: 'Nanum Gothic', sans-serif;
     }
+
     .copy-btn {
       margin-left: 0.5rem;
       padding: 0.5rem 1rem;
@@ -114,44 +128,11 @@
       font-family: 'Nanum Gothic', sans-serif;
       font-weight: 600;
     }
+
     .copy-btn:hover {
       background-color: #a45d23;
     }
-    .guestbook {
-      background: #fff5e6;
-      box-shadow: 0 4px 16px rgba(161, 117, 56, 0.25);
-      text-align: left;
-      border-radius: 1rem;
-      padding: 1rem 1.5rem;
-      margin-top: 3rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 400;
-    }
-    .guestbook h3 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      color: #7f4f24;
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 700;
-    }
-    .guestbook input,
-    .guestbook textarea {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 0.75rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 1rem;
-      border: 1px solid #c79a5a;
-      color: #5a4427;
-      background: #fff8f0;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      resize: vertical;
-      min-height: 44px;
-      font-weight: 400;
-    }
-    button.guestbook-btn,
+
     button.toggle-account-btn {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -166,10 +147,11 @@
       font-family: 'Nanum Gothic', sans-serif;
       font-weight: 700;
     }
-    button.guestbook-btn:hover,
+
     button.toggle-account-btn:hover {
       background-color: #a45d23;
     }
+
     #accountInfo {
       color: #444;
       background: #fff5e6;
@@ -178,9 +160,8 @@
       margin-top: 1rem;
       text-align: center;
       display: none;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 400;
     }
+
     #dday {
       margin-top: 1rem;
       font-size: clamp(1rem, 4vw, 1.5rem);
@@ -190,31 +171,33 @@
       user-select: none;
       font-family: 'Nanum Gothic', sans-serif;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+
     @media (max-width: 768px) {
       .slideshow { height: 300px; }
     }
+
     @media (max-width: 480px) {
       .slideshow { height: 200px; }
       header h1 { font-size: 1.4rem; }
       header h2, .date, .info { font-size: 1.1rem; }
       #dday { font-size: 1.5rem; }
-      .guestbook textarea {
-        font-size: 0.95rem;
-      }
-      .copy-btn, .toggle-account-btn, .guestbook-btn {
+      .copy-btn, .toggle-account-btn {
         font-size: 0.95rem;
       }
     }
@@ -223,8 +206,7 @@
 <body>
   <header>
     <h1>이정주❤️장지이 결혼합니다.</h1>
-    <h2>두 사람의 마음을 고이 담아<br />
-    소중한 분들을 초대합니다.</h2>
+    <h2>두 사람의 마음을 고이 담아<br />소중한 분들을 초대합니다.</h2>
   </header>
 
   <div class="slideshow">
@@ -257,7 +239,7 @@
 
   <div class="info">
     <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기/숨기기</button>
-    <div id="accountInfo" aria-live="polite" aria-atomic="true" style="display:none;">
+    <div id="accountInfo" aria-live="polite" aria-atomic="true">
       신랑 이정주<br />
       카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
       <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
@@ -267,16 +249,7 @@
     </div>
   </div>
 
-  <div class="guestbook" aria-label="방명록 작성">
-    <h3>방명록</h3>
-    <input type="text" id="guestName" placeholder="이름을 입력해주세요" aria-label="이름 입력" />
-    <textarea id="guestMessage" placeholder="따뜻한 한마디를 남겨주세요..." rows="5" aria-label="메시지 입력"></textarea>
-    <button class="guestbook-btn" onclick="sendEmail()">남기기</button>
-    <div id="saveStatus" role="status" aria-live="polite"></div>
-  </div>
-
   <script>
-    // D-Day 카운터
     function updateDday() {
       const ddayEl = document.getElementById('dday');
       const weddingDate = new Date('2025-10-26T14:30:00+09:00');
@@ -296,50 +269,11 @@
     setInterval(updateDday, 60000);
     updateDday();
 
-    // 방명록 전송
-    function sendEmail() {
-      const name = document.getElementById("guestName").value.trim();
-      const message = document.getElementById("guestMessage").value.trim();
-      const status = document.getElementById("saveStatus");
-      const button = document.querySelector(".guestbook-btn");
-
-      if (!name || !message) {
-        alert("이름과 메시지를 모두 입력해주세요.");
-        return;
-      }
-
-      status.style.color = "black";
-      status.textContent = "전송 중입니다...";
-      button.disabled = true;
-
-      fetch("https://script.google.com/macros/s/AKfycbyNMQSU2cJYMHVtzbiWklcWExK2fSzgPvXKmUg6Zs-964C-pnvau3Pc696KpG6uaBwIJQ/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
-      })
-      .then(res => res.text())
-      .then(() => {
-        document.getElementById("guestName").value = "";
-        document.getElementById("guestMessage").value = "";
-        status.innerHTML = "<span style='color:green;'>🌸 전송되었습니다. 감사합니다!</span>";
-        button.disabled = false;
-        status.scrollIntoView({ behavior: "smooth", block: "center" });
-      })
-      .catch(error => {
-        console.error("전송 실패:", error);
-        status.innerHTML = "<span style='color:red;'>전송 실패. 다시 시도해주세요.</span>";
-        button.disabled = false;
-        status.scrollIntoView({ behavior: "smooth", block: "center" });
-      });
-    }
-
-    // 계좌 정보 토글
     function toggleAccount() {
       const el = document.getElementById('accountInfo');
       el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
     }
 
-    // 슬라이드 자동 전환
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
       let current = 0;
@@ -359,7 +293,6 @@
       setInterval(nextSlide, 5000);
     });
 
-    // 계좌 복사
     function copyToClipboard(id) {
       const el = document.getElementById(id);
       navigator.clipboard.writeText(el.textContent).then(() => {
