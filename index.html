@@ -292,7 +292,7 @@
       }
 
       const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      ddayEl.textContent = `결혼식까지 D-${days}일 남았습니다`;
+      ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
     }
     setInterval(updateDday, 60000);
     updateDday();
