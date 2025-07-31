@@ -6,7 +6,7 @@
   <title>우리 결혼합니다</title>
   <meta property="og:title" content="이정주❤️장지이 결혼합니다." />
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
+  <meta property="og:image" content="https://github.com/zhengzhou89/weddinginvitation/blob/main/image1.jpg" />
   <meta property="og:type" content="website" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
@@ -103,7 +103,7 @@
     }
 
     .date {
-      font-size: clamp(1rem, 4vw, 1.2rem);
+      font-size: clamp(1.2rem, 5vw, 1.5rem);
       margin-top: 2rem;
       font-weight: 600;
       animation: pulse 2s infinite ease-in-out;
@@ -164,7 +164,7 @@
 
     #dday {
       margin-top: 1rem;
-      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+      font-size: clamp(1rem, 4vw, 1.5rem);
       font-weight: 700;
       color: #d17f3a;
       animation: pulse 2s infinite ease-in-out;
@@ -188,30 +188,54 @@
       100% { transform: scale(1); }
     }
 
-    /* 모바일 화면 글씨 크기 조정 */
+    /* 모바일 화면 글씨 크기 및 줄간 최적화 */
     @media (max-width: 768px) {
-      .slideshow { height: 300px; }
-      header h1 { font-size: 1.8rem; }
-      header h2, .date, .info { font-size: 1.3rem; }
-      #dday { font-size: 1.4rem; }
-      .copy-btn, .toggle-account-btn {
-        font-size: 1rem;
+      .slideshow {
+        height: 280px;
       }
-      .message {
-        font-size: 1.1rem;
+      header h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
       }
-    }
-
-    @media (max-width: 480px) {
-      .slideshow { height: 200px; }
-      header h1 { font-size: 1.6rem; }
-      header h2, .date, .info { font-size: 1.2rem; }
-      #dday { font-size: 1.3rem; }
+      header h2, .date, .info {
+        font-size: 1.15rem;
+        line-height: 1.4;
+      }
+      #dday {
+        font-size: 1.3rem;
+        line-height: 1.3;
+      }
       .copy-btn, .toggle-account-btn {
         font-size: 0.95rem;
       }
       .message {
         font-size: 1rem;
+        line-height: 1.4;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slideshow {
+        height: 180px;
+      }
+      header h1 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+      }
+      header h2, .date, .info {
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+      #dday {
+        font-size: 1.15rem;
+        line-height: 1.2;
+      }
+      .copy-btn, .toggle-account-btn {
+        font-size: 0.9rem;
+      }
+      .message {
+        font-size: 0.95rem;
+        line-height: 1.35;
       }
     }
   </style>
