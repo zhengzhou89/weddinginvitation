@@ -191,6 +191,68 @@
       font-family: 'Nanum Gothic', sans-serif;
     }
 
+    /* 방명록 폼 스타일 */
+    section.guestbook {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: left;
+      background: #fff5e6;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      color: #5a4427;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+    }
+
+    section.guestbook h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #7f4f24;
+    }
+
+    section.guestbook label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    section.guestbook input[type="text"],
+    section.guestbook textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #d17f3a;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      resize: vertical;
+    }
+
+    section.guestbook button[type="submit"] {
+      background: #d17f3a;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    section.guestbook button[type="submit"]:hover {
+      background-color: #a45d23;
+    }
+
+    #formStatus {
+      margin-top: 1rem;
+      min-height: 1.5rem;
+      color: #7f4f24;
+      font-weight: 600;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -219,6 +281,9 @@
         font-size: 1.4rem;
         padding: 1.5rem 2rem;
         min-height: 180px;
+      }
+      section.guestbook {
+        padding: 1rem 1.5rem;
       }
     }
 
@@ -278,7 +343,24 @@
     </div>
   </div>
 
+  <!-- 2. 방명록 폼 추가 -->
+  <section class="guestbook" aria-label="방명록">
+    <h3>방명록 남기기</h3>
+    <form id="guestbookForm">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" required autocomplete="name" />
+
+      <label for="messageInput">메시지</label>
+      <textarea id="messageInput" name="message" rows="4" required></textarea>
+
+      <button type="submit">전송하기</button>
+    </form>
+    <div id="formStatus" role="status" aria-live="polite"></div>
+  </section>
+
   <script>
+    // 기존 D-day 함수 및 슬라이드, 타이핑 효과 등 유지
+
     function updateDday() {
       const ddayEl = document.getElementById('dday');
       const weddingDate = new Date('2025-10-26T14:30:00+09:00');
@@ -287,13 +369,14 @@
 
       if (diff <= 0) {
         ddayEl.textContent = "🎉 오늘은 우리의 결혼식 날입니다! 🎉";
+        clearInterval(ddayInterval);
         return;
       }
 
       const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
       ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
     }
-    setInterval(updateDday, 60000);
+    const ddayInterval = setInterval(updateDday, 60000);
     updateDday();
 
     function toggleAccount() {
@@ -357,7 +440,6 @@
           typeWriter(msgEl, messageText);
         });
       } else {
-        // 폰트 API 지원 안 하면 바로 실행
         typeWriter(msgEl, messageText);
       }
     });
@@ -368,98 +450,40 @@
         alert("계좌번호가 복사되었습니다.");
       });
     }
-  </script>
 
-<section class="guestbook" style="width: 90%; max-width: 600px; margin: 3rem auto; text-align: left;">
-  <h3 style="color:#7f4f24; font-family: 'Nanum Gothic', sans-serif;">💌 방명록 남기기</h3>
-  <form id="guestbookForm" style="display:flex; flex-direction: column; gap: 0.75rem;">
-    <input type="text" id="name" placeholder="이름 (선택)" style="padding: 0.5rem; border-radius: 0.4rem; border: 1px solid #d17f3a; font-size: 1rem;"/>
-    <textarea id="messageInput" placeholder="축하 메시지를 남겨주세요 ❤️" rows="4" required
-      style="padding: 0.5rem; border-radius: 0.4rem; border: 1px solid #d17f3a; font-size: 1rem; resize: vertical;"></textarea>
-    <button type="submit" style="background-color:#d17f3a; color:white; border:none; padding: 0.7rem; border-radius: 0.5rem; font-weight: 700; cursor:pointer;">방명록 남기기</button>
-  </form>
+    // 3. 방명록 폼 제출 시 구글 앱스 스크립트로 전송
+    document.getElementById('guestbookForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  <div id="guestbookList" style="margin-top: 2rem; max-height: 300px; overflow-y: auto; border: 1px solid #d17f3a; padding: 1rem; border-radius: 0.8rem; background: #fff5e6; font-family: 'Noto Sans KR', sans-serif; color: #4b382a;">
-    <p>방명록을 불러오는 중입니다...</p>
-  </div>
-</section>
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('messageInput').value.trim();
+      const statusEl = document.getElementById('formStatus');
 
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyt1G8_vutAxXyWZbr90xOSHv0FzqxcHeZjI4yk68gpknE86aTLjD-J6rOx_9v6jPJZ/exec'; // 위 1-3에서 복사한 GAS 웹앱 URL로 교체
-
-  const form = document.getElementById('guestbookForm');
-  const guestbookList = document.getElementById('guestbookList');
-
-  // 방명록 목록 불러오기
-  async function loadGuestbook() {
-    try {
-      const res = await fetch(scriptURL);
-      const data = await res.json();
-
-      if (data.length === 0) {
-        guestbookList.innerHTML = '<p>아직 등록된 방명록이 없습니다.</p>';
+      if (!name || !message) {
+        statusEl.textContent = "이름과 메시지를 모두 입력해 주세요.";
         return;
       }
 
-      guestbookList.innerHTML = data
-        .map(item => {
-          const date = new Date(item.timestamp);
-          const timeStr = date.toLocaleString('ko-KR', { hour12: false });
-          const name = item.name ? item.name : '익명';
-          const message = item.message.replace(/\n/g, '<br>');
+      statusEl.textContent = "전송 중...";
 
-          return `
-            <div style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #d17f3a;">
-              <div style="font-weight: 700; color:#a45d23;">${name} <span style="font-weight: 400; font-size: 0.85rem; color:#7f4f24;">(${timeStr})</span></div>
-              <div style="white-space: pre-wrap; margin-top: 0.3rem;">${message}</div>
-            </div>`;
-        })
-        .join('');
-    } catch (err) {
-      guestbookList.innerHTML = '<p>방명록을 불러오는데 실패했습니다.</p>';
-      console.error(err);
-    }
-  }
-
-  // 폼 제출 처리
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const message = document.getElementById('messageInput').value.trim();
-
-    if (!message) {
-      alert('축하 메시지를 입력해주세요.');
-      return;
-    }
-
-    try {
-      const res = await fetch(scriptURL, {
+      fetch('https://script.google.com/macros/s/AKfycbzF0DroYh2hj6ll8Ch6RL9VheVqDbjEd9ixclw1p0abaX4nhj1QV3pnNw1xFfWCSv9AoQ/exec', {
         method: 'POST',
-        body: JSON.stringify({ name, message }),
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          statusEl.textContent = "방명록이 성공적으로 등록되었습니다. 감사합니다!";
+          this.reset();
+        } else {
+          statusEl.textContent = "오류가 발생했습니다: " + (data.message || "알 수 없는 오류");
+        }
+      })
+      .catch(() => {
+        statusEl.textContent = "네트워크 오류가 발생했습니다. 다시 시도해 주세요.";
       });
-      const result = await res.json();
-
-      if (result.result === 'success') {
-        alert('방명록이 등록되었습니다. 감사합니다!');
-        form.reset();
-        loadGuestbook(); // 목록 새로고침
-      } else {
-        alert('오류가 발생했습니다: ' + (result.message || '알 수 없는 오류'));
-      }
-    } catch (err) {
-      alert('서버와 통신 중 오류가 발생했습니다.');
-      console.error(err);
-    }
-  });
-
-  // 페이지 로드 시 방명록 목록 불러오기
-  loadGuestbook();
-
-  // 30초마다 방명록 실시간 갱신
-  setInterval(loadGuestbook, 30000);
-</script>
-
+    });
+  </script>
 </body>
 </html>
