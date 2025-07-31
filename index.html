@@ -262,8 +262,7 @@
 
   <div class="date">
     2025.10.26.(일) PM 2:30<br />
-    충주 파라다이스 웨딩홀,<br />
-    드레스가든(야외홀)<br />
+    충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br />
     📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" rel="noopener noreferrer" style="color:#a45d23;">웨딩홀 위치 보기 (카카오맵)</a>
   </div>
 
@@ -292,7 +291,7 @@
       }
 
       const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      ddayEl.textContent = `결혼식까지 D-${days}일 남았습니다`;
+      ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
     }
     setInterval(updateDday, 60000);
     updateDday();
@@ -327,7 +326,7 @@
       showSlide(current);
       setInterval(nextSlide, 5000);
 
-      // 타이핑 애니메이션
+      // 폰트가 모두 로드된 후에 타이핑 시작
       const messageText = `황금빛 가을 햇살 아래
 두 사람이 사랑과 믿음으로
 새로운 길을 함께 걷기로 약속합니다.
@@ -353,7 +352,14 @@
         typing();
       }
 
-      typeWriter(msgEl, messageText);
+      if (document.fonts) {
+        document.fonts.ready.then(() => {
+          typeWriter(msgEl, messageText);
+        });
+      } else {
+        // 폰트 API 지원 안 하면 바로 실행
+        typeWriter(msgEl, messageText);
+      }
     });
 
     function copyToClipboard(id) {
