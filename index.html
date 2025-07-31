@@ -9,7 +9,6 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
   <meta property="og:type" content="website" />
   <style>
-    /* 기존 스타일 유지... */
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
 
     html, body {
@@ -93,8 +92,8 @@
       color: #6a4b23;
       box-sizing: border-box;
       animation: fadeIn 2s ease-in;
-      min-height: 220px; /* 타이핑 영역 고정 높이 */
-      white-space: pre-wrap; /* 줄바꿈 유지 */
+      min-height: 220px;
+      white-space: pre-wrap;
       user-select: none;
     }
 
@@ -279,22 +278,6 @@
     </div>
   </div>
 
-  <!-- ==== 방명록 폼 시작 (2-1) ==== -->
-  <section style="width:90%; max-width:600px; margin:2rem auto; text-align:left; background:#fff5e6; padding:1rem 1.5rem; border-radius:1rem;">
-    <h3 style="font-family:'Nanum Gothic', sans-serif; color:#7f4f24;">💌 방명록 남기기</h3>
-    <form id="guestbookForm">
-      <label for="guestName">이름</label><br />
-      <input type="text" id="guestName" name="name" placeholder="이름을 입력하세요" style="width:100%; padding:0.5rem; margin-bottom:1rem;" /><br />
-
-      <label for="guestMessage">메시지</label><br />
-      <textarea id="guestMessage" name="message" rows="4" placeholder="축하 메시지를 남겨주세요" required style="width:100%; padding:0.5rem;"></textarea><br />
-
-      <button type="submit" style="background:#d17f3a; color:#fff; border:none; padding:0.7rem 1.2rem; border-radius:0.5rem; cursor:pointer; font-weight:700;">보내기</button>
-    </form>
-    <div id="formResult" style="margin-top:1rem; color:#7f4f24; font-weight:600;"></div>
-  </section>
-  <!-- ==== 방명록 폼 끝 ==== -->
-
   <script>
     function updateDday() {
       const ddayEl = document.getElementById('dday');
@@ -343,7 +326,6 @@
       showSlide(current);
       setInterval(nextSlide, 5000);
 
-      // 폰트가 모두 로드된 후에 타이핑 시작
       const messageText = `황금빛 가을 햇살 아래
 두 사람이 사랑과 믿음으로
 새로운 길을 함께 걷기로 약속합니다.
@@ -384,42 +366,6 @@
         alert("계좌번호가 복사되었습니다.");
       });
     }
-
-    // ==== 방명록 제출 처리 (2-2) ====
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw1l6QH8THGPu6nWweGbmoJ2ZDwS3lyE1sctN3wbrYqpyEvc_RFOGMOoa9poToj-OxB7g/exec';  // ← 1단계에서 받은 구글 앱스 스크립트 웹앱 URL로 변경하세요.
-
-    const form = document.getElementById('guestbookForm');
-    const resultEl = document.getElementById('formResult');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const name = document.getElementById('guestName').value.trim() || '익명';
-      const message = document.getElementById('guestMessage').value.trim();
-
-      if (!message) {
-        alert('메시지를 입력해주세요.');
-        return;
-      }
-
-      fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify({ name, message }),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === 'success') {
-          resultEl.textContent = '감사합니다! 방명록이 등록되었습니다.';
-          form.reset();
-        } else {
-          resultEl.textContent = '오류가 발생했습니다. 다시 시도해주세요.';
-        }
-      })
-      .catch(() => {
-        resultEl.textContent = '오류가 발생했습니다. 다시 시도해주세요.';
-      });
-    });
   </script>
 </body>
 </html>
