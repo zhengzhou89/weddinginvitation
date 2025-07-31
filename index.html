@@ -8,13 +8,6 @@
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
   <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
   <meta property="og:type" content="website" />
-
-  <!-- 카카오 SDK -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-  <script>
-    Kakao.init('YOUR_APP_KEY'); // 여기에 본인의 카카오 JavaScript 키 입력
-  </script>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600&display=swap');
     body {
@@ -149,21 +142,6 @@
       font-weight: bold;
       text-align: center;
     }
-    .kakao-share {
-      margin-top: 2rem;
-    }
-    .kakao-share button {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      background-color: #fae100;
-      color: #000;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-    .kakao-share button:hover {
-      background-color: #e0cc00;
-    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -226,11 +204,7 @@
     신부 전화번호 : 010-2691-0852<br />
     신부 계좌번호 : <span id="brideAccount">3333-27-1213847</span>
     <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br /><br />
-    📍 <a href="https://map.kakao.com/link/map/충주 파라다이스 웨딩홀,37.00601,127.92869" target="_blank">웨딩홀 위치 보기 (카카오맵)</a>
-  </div>
-
-  <div class="kakao-share">
-    <button id="kakaoShareBtn">카카오톡으로 공유하기</button>
+    📍 <a href="https://map.kakao.com/link/map/충주 파라다이스웨딩홀,37.00601,127.92869" target="_blank">웨딩홀 위치 보기 (카카오맵)</a>
   </div>
 
   <div class="guestbook">
@@ -284,30 +258,6 @@
         alert("계좌번호가 복사되었습니다.");
       });
     }
-
-    document.getElementById('kakaoShareBtn').addEventListener('click', function () {
-      Kakao.Share.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: '이정주 ❤️ 장지이 결혼합니다',
-          description: '2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다.',
-          imageUrl: 'https://yourdomain.com/og-image.jpg',
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-        buttons: [
-          {
-            title: '웹청첩장 보기',
-            link: {
-              mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
-            },
-          }
-        ]
-      });
-    });
 
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
