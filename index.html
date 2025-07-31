@@ -92,6 +92,9 @@
       color: #6a4b23;
       box-sizing: border-box;
       animation: fadeIn 2s ease-in;
+      min-height: 220px; /* 타이핑 영역 고정 높이 */
+      white-space: pre-wrap; /* 줄바꿈 유지 */
+      user-select: none;
     }
 
     .info,
@@ -215,6 +218,7 @@
       .message {
         font-size: 1.4rem;
         padding: 1.5rem 2rem;
+        min-height: 180px;
       }
     }
 
@@ -229,6 +233,7 @@
       .message {
         font-size: 1.3rem;
         padding: 1.2rem 1.5rem;
+        min-height: 150px;
       }
     }
   </style>
@@ -251,19 +256,14 @@
     <img src="image9.jpg" class="slide" alt="웨딩사진9" loading="lazy" />
   </div>
 
-  <div class="message">
-    황금빛 가을 햇살 아래<br />
-    두 사람이 사랑과 믿음으로<br />
-    새로운 길을 함께 걷기로 약속합니다.<br /><br />
-    살랑이는 바람에 실려 온 낙엽처럼<br />
-    따뜻한 축복을 전해 주세요.
-  </div>
+  <div class="message" id="message"></div>
 
   <div id="dday" aria-live="polite" aria-atomic="true"></div>
 
   <div class="date">
     2025.10.26.(일) PM 2:30<br />
-    충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br />
+    충주 파라다이스 웨딩홀,<br />
+    드레스가든(야외홀)<br />
     📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" rel="noopener noreferrer" style="color:#a45d23;">웨딩홀 위치 보기 (카카오맵)</a>
   </div>
 
@@ -292,7 +292,7 @@
       }
 
       const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
+      ddayEl.textContent = `결혼식까지 D-${days}일 남았습니다`;
     }
     setInterval(updateDday, 60000);
     updateDday();
@@ -326,6 +326,34 @@
 
       showSlide(current);
       setInterval(nextSlide, 5000);
+
+      // 타이핑 애니메이션
+      const messageText = `황금빛 가을 햇살 아래
+두 사람이 사랑과 믿음으로
+새로운 길을 함께 걷기로 약속합니다.
+
+살랑이는 바람에 실려 온 낙엽처럼
+따뜻한 축복을 전해 주세요❤️`;
+
+      const msgEl = document.getElementById('message');
+
+      function typeWriter(element, text, speed = 80) {
+        let i = 0;
+        function typing() {
+          if (i < text.length) {
+            if (text[i] === '\n') {
+              element.innerHTML += '<br />';
+            } else {
+              element.innerHTML += text[i];
+            }
+            i++;
+            setTimeout(typing, speed);
+          }
+        }
+        typing();
+      }
+
+      typeWriter(msgEl, messageText);
     });
 
     function copyToClipboard(id) {
