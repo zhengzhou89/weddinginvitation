@@ -9,7 +9,7 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
   <meta property="og:type" content="website" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
 
     html, body {
       margin: 0;
@@ -78,7 +78,22 @@
       z-index: 1;
     }
 
-    .message,
+    .message {
+      font-family: 'Nanum Pen Script', cursive;
+      background: #f1d9a7;
+      width: 90%;
+      max-width: 600px;
+      font-size: 1.5rem;
+      line-height: 2;
+      font-weight: 400;
+      padding: 2rem 2.5rem;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      color: #6a4b23;
+      box-sizing: border-box;
+      animation: fadeIn 2s ease-in;
+    }
+
     .info,
     #accountInfo,
     .date {
@@ -86,7 +101,6 @@
       max-width: 600px;
     }
 
-    .message,
     .info,
     #accountInfo {
       font-size: 1.05rem;
@@ -102,16 +116,16 @@
       font-weight: 400;
     }
 
- .date {
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem); /* 기존보다 더 작게 */
-  margin-top: 2rem;
-  font-weight: 600;
-  animation: pulse 2s infinite ease-in-out;
-  color: #7f4f24;
-  background: transparent;
-  padding: 0;
-  font-family: 'Nanum Gothic', sans-serif;
-}
+    .date {
+      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+      margin-top: 2rem;
+      font-weight: 600;
+      animation: pulse 2s infinite ease-in-out;
+      color: #7f4f24;
+      background: transparent;
+      padding: 0;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
 
     .copy-btn {
       margin-left: 0.5rem;
@@ -153,26 +167,26 @@
     }
 
     #accountInfo {
-  color: #444;
-  background: #fff5e6;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin-top: 1rem;
-  text-align: center;
-  display: none;
-  font-size: 0.9rem;  /* 여기서 글씨 크기 조절 */
-  font-family: 'Noto Sans KR', sans-serif;
-}
+      color: #444;
+      background: #fff5e6;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
+      font-size: 0.9rem;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
 
     #dday {
-  margin-top: 1rem;
-  font-size: clamp(0.8rem, 3vw, 1rem); /* 기존보다 더 작게 */
-  font-weight: 700;
-  color: #d17f3a;
-  animation: pulse 2s infinite ease-in-out;
-  user-select: none;
-  font-family: 'Nanum Gothic', sans-serif;
-}
+      margin-top: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #d17f3a;
+      animation: pulse 2s infinite ease-in-out;
+      user-select: none;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -190,17 +204,17 @@
       100% { transform: scale(1); }
     }
 
-    /* 모바일 화면 글씨 크기 조정 */
     @media (max-width: 768px) {
       .slideshow { height: 300px; }
       header h1 { font-size: 1.8rem; }
       header h2, .date, .info { font-size: 1.3rem; }
-      #dday { font-size: 1.4rem; }
+      #dday { font-size: 1.8rem; }
       .copy-btn, .toggle-account-btn {
         font-size: 1rem;
       }
       .message {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
+        padding: 1.5rem 2rem;
       }
     }
 
@@ -208,12 +222,13 @@
       .slideshow { height: 200px; }
       header h1 { font-size: 1.6rem; }
       header h2, .date, .info { font-size: 1.2rem; }
-      #dday { font-size: 1.3rem; }
+      #dday { font-size: 1.6rem; }
       .copy-btn, .toggle-account-btn {
         font-size: 0.95rem;
       }
       .message {
-        font-size: 1rem;
+        font-size: 1.3rem;
+        padding: 1.2rem 1.5rem;
       }
     }
   </style>
@@ -253,7 +268,7 @@
   </div>
 
   <div class="info">
-    <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기/숨기기</button>
+    <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
     <div id="accountInfo" aria-live="polite" aria-atomic="true">
       신랑 이정주<br />
       카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
@@ -276,17 +291,22 @@
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      ddayEl.textContent = `결혼식까지 D-${days}일 (${hours}시간 ${minutes}분 남았습니다.)`;
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      ddayEl.textContent = `결혼식까지 D-${days}일 남았습니다`;
     }
     setInterval(updateDday, 60000);
     updateDday();
 
     function toggleAccount() {
       const el = document.getElementById('accountInfo');
-      el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+      const btn = document.querySelector('.toggle-account-btn');
+      if (el.style.display === 'none' || el.style.display === '') {
+        el.style.display = 'block';
+        btn.textContent = "💌 마음 전하실 곳 숨기기";
+      } else {
+        el.style.display = 'none';
+        btn.textContent = "💌 마음 전하실 곳 보기";
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
