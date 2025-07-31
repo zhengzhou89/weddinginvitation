@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>이정주 ❤️ 장지이 결혼합니다</title>
+  <title>우리 결혼합니다</title>
   <meta property="og:title" content="이정주 ❤️ 장지이 결혼합니다" />
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
   <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
-  <meta property="og:url" content="https://your-wedding-site.com" />
   <meta property="og:type" content="website" />
+
+  <!-- 카카오 SDK -->
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script>
+    Kakao.init('YOUR_APP_KEY'); // 여기에 본인의 카카오 JavaScript 키 입력
+  </script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600&display=swap');
     body {
@@ -23,86 +28,306 @@
       text-align: center;
       padding-bottom: 150px;
     }
-    .kakao-btn {
+    header {
+      margin-top: 40px;
+      animation: slideDown 1.5s ease-out;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-weight: 300;
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      margin-bottom: 2rem;
+    }
+    .slideshow {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      background: #eee;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      object-fit: contain;
+      object-position: center center;
+      background-color: #fff;
+      border-radius: 16px;
+      user-select: none;
+    }
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .message {
+      max-width: 700px;
+      padding: 2rem;
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
+      line-height: 1.8;
+      background: #ffffffdd;
+      border-radius: 1rem;
       margin-top: 2rem;
-      background-color: #FEE500;
+      animation: fadeIn 2s ease-in;
+    }
+    .date {
+      font-size: clamp(1.2rem, 5vw, 1.5rem);
+      margin-top: 2rem;
+      font-weight: 600;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .info {
+      margin-top: 1.5rem;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      line-height: 1.6;
+      color: #555;
+      animation: fadeIn 2s ease-in;
+    }
+    .copy-btn {
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      border: none;
+      background-color: #ccc;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #bbb;
+    }
+    .guestbook {
+      margin-top: 3rem;
+      padding: 1rem;
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      box-sizing: border-box;
+    }
+    .guestbook h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .guestbook input,
+    .guestbook textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0.75rem;
+      font-family: inherit;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    button.guestbook-btn {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #fbb03b;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button.guestbook-btn:hover {
+      background-color: #e79d1a;
+    }
+    #saveStatus {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .kakao-share {
+      margin-top: 2rem;
+    }
+    .kakao-share button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #fae100;
       color: #000;
       border: none;
       border-radius: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
       cursor: pointer;
     }
-    .kakao-btn:hover {
-      background-color: #f3d700;
+    .kakao-share button:hover {
+      background-color: #e0cc00;
     }
-    .map-link {
-      margin-top: 2rem;
-      font-size: 1rem;
-      background: #f0f0f0;
-      padding: 0.8rem 1.2rem;
-      border-radius: 0.7rem;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .map-link:hover {
-      background: #e6e6e6;
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    /* 나머지 기존 스타일 (슬라이드, 방명록 등) 생략 - 이전 코드에 포함되어 있음 */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .slideshow { height: 300px; }
+    }
+    @media (max-width: 480px) {
+      .slideshow { height: 220px; }
+      h1 { font-size: 1.5rem; }
+      h2, .date, .info { font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>신랑 이정주 & 신부 장지이</h1>
+    <h2>두 사람의 마음을 고이 담아</h2>
+    <h2>소중한 분들을 초대합니다.</h2>
+  </header>
 
-  <h1>이정주 ❤️ 장지이</h1>
-  <h2>우리 결혼합니다</h2>
+  <div class="slideshow">
+    <img src="image1.jpg" class="slide active" alt="웨딩사진1" loading="lazy" />
+    <img src="image2.jpg" class="slide" alt="웨딩사진2" loading="lazy" />
+    <img src="image3.jpg" class="slide" alt="웨딩사진3" loading="lazy" />
+    <img src="image4.jpg" class="slide" alt="웨딩사진4" loading="lazy" />
+    <img src="image5.jpg" class="slide" alt="웨딩사진5" loading="lazy" />
+    <img src="image6.jpg" class="slide" alt="웨딩사진6" loading="lazy" />
+    <img src="image7.jpg" class="slide" alt="웨딩사진7" loading="lazy" />
+    <img src="image8.jpg" class="slide" alt="웨딩사진8" loading="lazy" />
+    <img src="image9.jpg" class="slide" alt="웨딩사진9" loading="lazy" />
+  </div>
 
-  <!-- 슬라이드쇼 생략 (앞서 제공한 슬라이드 코드 유지) -->
+  <div class="message">
+    황금빛 가을 햇살 아래<br />
+    두 사람이 사랑과 믿음으로<br />
+    새로운 길을 함께 걷기로 약속합니다.<br /><br />
+    살랑이는 바람에 실려 온 낙엽처럼<br />
+    따뜻한 축복을 전해 주세요.
+  </div>
 
-  <!-- 예식 정보 -->
   <div class="date">
     2025년 10월 26일 일요일 오후 2시 30분<br />
     충주 파라다이스 웨딩홀, 드레스가든(야외홀)
   </div>
 
-  <!-- 지도 링크 -->
-  <a class="map-link" href="https://map.naver.com/v5/search/충주%20파라다이스%20웨딩홀" target="_blank">
-    📍 장소 보기 (네이버지도)
-  </a>
+  <div class="info">
+    신랑 전화번호 : 010-5360-1111<br />
+    신랑 계좌번호 : <span id="groomAccount">3333-12-1138343</span>
+    <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
+    신부 전화번호 : 010-2691-0852<br />
+    신부 계좌번호 : <span id="brideAccount">3333-27-1213847</span>
+    <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br /><br />
+    📍 <a href="https://map.kakao.com/link/map/충주 파라다이스 웨딩홀,37.00601,127.92869" target="_blank">웨딩홀 위치 보기 (카카오맵)</a>
+  </div>
 
-  <!-- 카카오 공유 버튼 -->
-  <button class="kakao-btn" onclick="shareKakao()">카카오톡으로 공유하기 💌</button>
+  <div class="kakao-share">
+    <button id="kakaoShareBtn">카카오톡으로 공유하기</button>
+  </div>
 
-  <!-- 방명록 생략 (앞서 제공한 방명록 코드 유지) -->
+  <div class="guestbook">
+    <h3>방명록</h3>
+    <input type="text" id="guestName" placeholder="이름을 입력해주세요" />
+    <textarea id="guestMessage" placeholder="따뜻한 한마디를 남겨주세요..." rows="5"></textarea>
+    <button class="guestbook-btn" onclick="sendEmail()">남기기</button>
+    <div id="saveStatus"></div>
+  </div>
 
   <script>
-    Kakao.init('YOUR_KAKAO_JS_KEY'); // 발급받은 JavaScript 키로 초기화
+    function sendEmail() {
+      const name = document.getElementById("guestName").value.trim();
+      const message = document.getElementById("guestMessage").value.trim();
+      const status = document.getElementById("saveStatus");
+      const button = document.querySelector(".guestbook-btn");
 
-    function shareKakao() {
+      if (!name || !message) {
+        alert("이름과 메시지를 모두 입력해주세요.");
+        return;
+      }
+
+      status.style.color = "black";
+      status.innerHTML = "전송 중입니다...";
+      button.disabled = true;
+
+      fetch("https://script.google.com/macros/s/AKfycbzMdNYhphp4jQ8vFLLvoxjWjDCN4cMKDCiigrHoyM3cCp-9gZS0Kuuo4CSGXVKk7hXn/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
+      })
+        .then(res => res.text())
+        .then(response => {
+          document.getElementById("guestName").value = "";
+          document.getElementById("guestMessage").value = "";
+          status.innerHTML = "<span style='color:green;'>🌸 전송되었습니다. 감사합니다!</span>";
+          button.disabled = false;
+          status.scrollIntoView({ behavior: "smooth", block: "center" });
+        })
+        .catch(error => {
+          console.error("전송 실패:", error);
+          status.innerHTML = "<span style='color:red;'>전송 실패. 다시 시도해주세요.</span>";
+          button.disabled = false;
+          status.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+    }
+
+    function copyToClipboard(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        alert("계좌번호가 복사되었습니다.");
+      });
+    }
+
+    document.getElementById('kakaoShareBtn').addEventListener('click', function () {
       Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
           title: '이정주 ❤️ 장지이 결혼합니다',
-          description: '2025년 10월 26일 오후 2시 30분\n충주 파라다이스 웨딩홀 드레스가든(야외홀)',
+          description: '2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다.',
           imageUrl: 'https://yourdomain.com/og-image.jpg',
           link: {
-            mobileWebUrl: 'https://your-wedding-site.com',
-            webUrl: 'https://your-wedding-site.com'
-          }
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
         },
         buttons: [
           {
-            title: '청첩장 보기',
+            title: '웹청첩장 보기',
             link: {
-              mobileWebUrl: 'https://your-wedding-site.com',
-              webUrl: 'https://your-wedding-site.com'
-            }
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
           }
         ]
       });
-    }
-  </script>
+    });
 
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      let current = 0;
+      let timer;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+        current = index;
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+
+      showSlide(current);
+      timer = setInterval(nextSlide, 5000);
+    });
+  </script>
 </body>
 </html>
