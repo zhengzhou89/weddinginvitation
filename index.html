@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>우리 결혼합니다</title>
+  <meta property="og:title" content="이정주 ❤️ 장지이 결혼합니다" />
+  <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
+  <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+  <meta property="og:type" content="website" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600&display=swap');
     body {
@@ -59,10 +63,14 @@
       z-index: 1;
     }
     .controls {
-      margin-top: 10px;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 1rem;
+      padding: 0 1rem;
+      box-sizing: border-box;
     }
     .controls button {
       padding: 0.5rem 1.5rem;
@@ -99,6 +107,18 @@
       line-height: 1.6;
       color: #555;
       animation: fadeIn 2s ease-in;
+    }
+    .copy-btn {
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      border: none;
+      background-color: #ccc;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #bbb;
     }
     .guestbook {
       margin-top: 3rem;
@@ -163,6 +183,8 @@
     }
     @media (max-width: 480px) {
       .slideshow { height: 220px; }
+      h1 { font-size: 1.5rem; }
+      h2, .date, .info { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -174,20 +196,19 @@
   </header>
 
   <div class="slideshow">
-    <img src="image1.jpg" class="slide active" />
-    <img src="image2.jpg" class="slide" />
-    <img src="image3.jpg" class="slide" />
-    <img src="image4.jpg" class="slide" />
-    <img src="image5.jpg" class="slide" />
-    <img src="image6.jpg" class="slide" />
-    <img src="image7.jpg" class="slide" />
-    <img src="image8.jpg" class="slide" />
-    <img src="image9.jpg" class="slide" />
-  </div>
-
-  <div class="controls">
-    <button id="prevBtn">← 이전</button>
-    <button id="nextBtn">다음 →</button>
+    <img src="image1.jpg" class="slide active" alt="웨딩사진1" loading="lazy" />
+    <img src="image2.jpg" class="slide" alt="웨딩사진2" loading="lazy" />
+    <img src="image3.jpg" class="slide" alt="웨딩사진3" loading="lazy" />
+    <img src="image4.jpg" class="slide" alt="웨딩사진4" loading="lazy" />
+    <img src="image5.jpg" class="slide" alt="웨딩사진5" loading="lazy" />
+    <img src="image6.jpg" class="slide" alt="웨딩사진6" loading="lazy" />
+    <img src="image7.jpg" class="slide" alt="웨딩사진7" loading="lazy" />
+    <img src="image8.jpg" class="slide" alt="웨딩사진8" loading="lazy" />
+    <img src="image9.jpg" class="slide" alt="웨딩사진9" loading="lazy" />
+    <div class="controls">
+      <button id="prevBtn">← 이전</button>
+      <button id="nextBtn">다음 →</button>
+    </div>
   </div>
 
   <div class="message">
@@ -205,9 +226,11 @@
 
   <div class="info">
     신랑 전화번호 : 010-5360-1111<br />
-    신랑 계좌번호 : 신한은행 110-442-634305<br /><br />
+    신랑 계좌번호 : <span id="groomAccount">3333-12-1138343</span>
+    <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
     신부 전화번호 : 010-2691-0852<br />
-    신부 계좌번호 : 
+    신부 계좌번호 : <span id="brideAccount">3333-27-1213847</span>
+    <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button>
   </div>
 
   <div class="guestbook">
@@ -231,10 +254,10 @@
       }
 
       status.style.color = "black";
-      status.textContent = "전송 중입니다...";
+      status.innerHTML = "전송 중입니다...";
       button.disabled = true;
 
-      fetch("https://script.google.com/macros/s/AKfycbzkyp6-4JG-OPqXQ4OOSGAI9iR6ZBnN1KgO8zYYnSulhzm_WOWOBxSu17Z9HCMd3K6mQw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzMdNYhphp4jQ8vFLLvoxjWjDCN4cMKDCiigrHoyM3cCp-9gZS0Kuuo4CSGXVKk7hXn/exec", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
@@ -243,16 +266,23 @@
         .then(response => {
           document.getElementById("guestName").value = "";
           document.getElementById("guestMessage").value = "";
-          status.style.color = "green";
-          status.textContent = "전송되었습니다. 감사합니다!";
+          status.innerHTML = "<span style='color:green;'>🌸 전송되었습니다. 감사합니다!</span>";
           button.disabled = false;
+          status.scrollIntoView({ behavior: "smooth", block: "center" });
         })
         .catch(error => {
           console.error("전송 실패:", error);
-          status.style.color = "red";
-          status.textContent = "전송 실패. 다시 시도해주세요.";
+          status.innerHTML = "<span style='color:red;'>전송 실패. 다시 시도해주세요.</span>";
           button.disabled = false;
+          status.scrollIntoView({ behavior: "smooth", block: "center" });
         });
+    }
+
+    function copyToClipboard(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        alert("계좌번호가 복사되었습니다.");
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
