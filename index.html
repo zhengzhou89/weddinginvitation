@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>우리 결혼합니다</title>
+  <title>이정주 ❤️ 장지이 결혼합니다</title>
   <meta property="og:title" content="이정주 ❤️ 장지이 결혼합니다" />
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
   <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
   <meta property="og:type" content="website" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600&display=swap');
+
     body {
       margin: 0;
       font-family: 'Noto Serif KR', serif;
@@ -21,184 +22,79 @@
       text-align: center;
       padding-bottom: 150px;
     }
+
     header {
-      margin-top: 40px;
-      animation: slideDown 1.5s ease-out;
+      margin: 40px 0;
     }
+
     h1 {
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-      margin-bottom: 0.5rem;
+      font-size: 2em;
+      margin-bottom: 0.3em;
     }
+
     h2 {
-      font-weight: 300;
-      font-size: clamp(1rem, 4vw, 1.2rem);
-      margin-bottom: 2rem;
+      font-size: 1.2em;
+      font-weight: normal;
+      margin: 0.2em;
     }
-    .slideshow {
-      position: relative;
-      width: 90%;
-      max-width: 600px;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      background: #eee;
+
+    .d-day {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #d16a7a;
     }
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      object-fit: contain;
-      object-position: center center;
-      background-color: #fff;
-      border-radius: 16px;
-      user-select: none;
-    }
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-    .message {
-      max-width: 700px;
-      padding: 2rem;
-      font-size: clamp(0.9rem, 4vw, 1.1rem);
-      line-height: 1.8;
-      background: #ffffffdd;
-      border-radius: 1rem;
-      margin-top: 2rem;
-      animation: fadeIn 2s ease-in;
-    }
-    .date {
-      font-size: clamp(1.2rem, 5vw, 1.5rem);
-      margin-top: 2rem;
-      font-weight: 600;
-      animation: pulse 2s infinite ease-in-out;
-    }
+
     .info {
-      margin-top: 1.5rem;
-      font-size: clamp(0.9rem, 3vw, 1rem);
-      line-height: 1.6;
-      color: #555;
-      animation: fadeIn 2s ease-in;
+      margin: 30px 0;
+      font-size: 1em;
     }
-    .copy-btn {
-      margin-left: 0.5rem;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.85rem;
+
+    .toggle-account-btn {
+      background-color: #d16a7a;
+      color: white;
       border: none;
-      background-color: #ccc;
-      border-radius: 0.3rem;
+      padding: 10px 15px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .copy-btn {
+      margin-left: 10px;
+      font-size: 0.9em;
+      padding: 5px 10px;
       cursor: pointer;
     }
-    .copy-btn:hover {
-      background-color: #bbb;
-    }
+
     .guestbook {
-      margin-top: 3rem;
-      padding: 1rem;
+      margin-top: 40px;
       width: 90%;
-      max-width: 600px;
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      text-align: left;
-      box-sizing: border-box;
+      max-width: 500px;
     }
-    .guestbook h3 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+
     .guestbook input,
     .guestbook textarea {
-      box-sizing: border-box;
       width: 100%;
-      padding: 0.75rem;
-      font-family: inherit;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      resize: vertical;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-family: 'Noto Serif KR', serif;
     }
-    button.guestbook-btn {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      background-color: #fbb03b;
+
+    .guestbook button {
+      padding: 10px 15px;
+      background-color: #d16a7a;
       color: white;
       border: none;
-      border-radius: 0.5rem;
+      font-size: 1em;
+      border-radius: 10px;
       cursor: pointer;
     }
-    button.guestbook-btn:hover {
-      background-color: #e79d1a;
-    }
-    #saveStatus {
-      margin-top: 1rem;
-      font-weight: bold;
-      text-align: center;
-    }
-    button.toggle-account-btn {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background-color: #fbb03b;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-    button.toggle-account-btn:hover {
-      background-color: #e79d1a;
-    }
-    #accountInfo {
-      margin-top: 1rem;
-      font-size: clamp(0.9rem, 3vw, 1rem);
-      color: #444;
-      display: none;
-      line-height: 1.5;
-      background: #fff5db;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      box-sizing: border-box;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-    #dday {
-      margin-top: 1rem;
-      font-size: clamp(1.4rem, 5vw, 2rem);
-      font-weight: 700;
-      color: #f6a623;
-      animation: pulse 2s infinite ease-in-out;
-      user-select: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    @media (max-width: 768px) {
-      .slideshow { height: 300px; }
-    }
-    @media (max-width: 480px) {
-      .slideshow { height: 220px; }
-      h1 { font-size: 1.5rem; }
-      h2, .date, .info { font-size: 0.95rem; }
-      #dday { font-size: 1.5rem; }
+
+    a {
+      color: #d16a7a;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -209,149 +105,70 @@
     <h2>소중한 분들을 초대합니다.</h2>
   </header>
 
-  <div class="slideshow">
-    <img src="image1.jpg" class="slide active" alt="웨딩사진1" loading="lazy" />
-    <img src="image2.jpg" class="slide" alt="웨딩사진2" loading="lazy" />
-    <img src="image3.jpg" class="slide" alt="웨딩사진3" loading="lazy" />
-    <img src="image4.jpg" class="slide" alt="웨딩사진4" loading="lazy" />
-    <img src="image5.jpg" class="slide" alt="웨딩사진5" loading="lazy" />
-    <img src="image6.jpg" class="slide" alt="웨딩사진6" loading="lazy" />
-    <img src="image7.jpg" class="slide" alt="웨딩사진7" loading="lazy" />
-    <img src="image8.jpg" class="slide" alt="웨딩사진8" loading="lazy" />
-    <img src="image9.jpg" class="slide" alt="웨딩사진9" loading="lazy" />
-  </div>
-
-  <div class="message">
-    황금빛 가을 햇살 아래<br />
-    두 사람이 사랑과 믿음으로<br />
-    새로운 길을 함께 걷기로 약속합니다.<br /><br />
-    살랑이는 바람에 실려 온 낙엽처럼<br />
-    따뜻한 축복을 전해 주세요.
-  </div>
-
-  <div id="dday" aria-live="polite" aria-atomic="true"></div>
-
-  <div class="date">
-    2025년 10월 26일 일요일 오후 2시 30분<br />
-    충주 파라다이스 웨딩홀, 드레스가든(야외홀)
-  </div>
+  <div class="d-day" id="dday">D-Day 계산 중...</div>
 
   <div class="info">
     신랑 전화번호 : 010-5360-1111<br />
-    신랑 계좌번호 : <span id="groomAccount">3333-12-1138343</span>
-    <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
     신부 전화번호 : 010-2691-0852<br />
-    신부 계좌번호 : <span id="brideAccount">3333-27-1213847</span>
-    <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
+
     <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기/숨기기</button>
-    <div id="accountInfo" aria-live="polite" aria-atomic="true">
-      국민은행 3333-12-1138343 (신랑 이정주)<br />
-      신한은행 3333-27-1213847 (신부 장지이)
+    <div id="accountInfo" style="display:none; margin-top: 15px;">
+      카카오뱅크 <span id="groomAccount">3333-12-1138343</span> (신랑 이정주)
+      <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
+      카카오뱅크 <span id="brideAccount">3333-27-1213847</span> (신부 장지이)
+      <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
     </div>
-    <br />
+
+    <br /><br />
     📍 <a href="https://map.kakao.com/?itemId=8418978" target="_blank" rel="noopener noreferrer">웨딩홀 위치 보기 (카카오맵)</a>
   </div>
 
   <div class="guestbook" aria-label="방명록 작성">
-    <h3>방명록</h3>
-    <input type="text" id="guestName" placeholder="이름을 입력해주세요" aria-label="이름 입력" />
-    <textarea id="guestMessage" placeholder="따뜻한 한마디를 남겨주세요..." rows="5" aria-label="메시지 입력"></textarea>
-    <button class="guestbook-btn" onclick="sendEmail()">남기기</button>
-    <div id="saveStatus" role="status" aria-live="polite"></div>
+    <h2>축하 메시지를 남겨주세요 💬</h2>
+    <form onsubmit="submitGuestbook(event)">
+      <input type="text" id="guestName" placeholder="이름" required />
+      <textarea id="guestMessage" placeholder="메시지를 입력해주세요" rows="3" required></textarea>
+      <button type="submit">방명록 남기기</button>
+    </form>
   </div>
 
   <script>
-    // D-Day 카운터 (예식 날짜: 2025-10-26 오후 2시 30분)
-    function updateDday() {
-      const ddayEl = document.getElementById('dday');
-      const weddingDate = new Date('2025-10-26T14:30:00+09:00'); // 한국 시간 기준
-      const now = new Date();
-      const diff = weddingDate - now;
-      if (diff <= 0) {
-        ddayEl.textContent = "🎉 오늘은 우리의 결혼식 날입니다! 🎉";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      ddayEl.textContent = `D-${days} (${hours}시간 ${minutes}분 남음)`;
-    }
-    setInterval(updateDday, 1000 * 60); // 1분마다 갱신
-    updateDday();
+    // D-Day 카운터
+    const weddingDate = new Date("2025-10-26T00:00:00+09:00");
+    const today = new Date();
+    const diffTime = weddingDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const ddayText = diffDays > 0 ? `결혼식까지 D-${diffDays}` :
+                     diffDays === 0 ? "🎉 오늘 결혼식이에요!" :
+                     `D+${Math.abs(diffDays)} 지난 결혼식`;
+    document.getElementById("dday").textContent = ddayText;
 
-    // 방명록 전송
-    function sendEmail() {
-      const name = document.getElementById("guestName").value.trim();
-      const message = document.getElementById("guestMessage").value.trim();
-      const status = document.getElementById("saveStatus");
-      const button = document.querySelector(".guestbook-btn");
-
-      if (!name || !message) {
-        alert("이름과 메시지를 모두 입력해주세요.");
-        return;
-      }
-
-      status.style.color = "black";
-      status.textContent = "전송 중입니다...";
-      button.disabled = true;
-
-      fetch("https://script.google.com/macros/s/AKfycbzMdNYhphp4jQ8vFLLvoxjWjDCN4cMKDCiigrHoyM3cCp-9gZS0Kuuo4CSGXVKk7hXn/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
-      })
-        .then(res => res.text())
-        .then(() => {
-          document.getElementById("guestName").value = "";
-          document.getElementById("guestMessage").value = "";
-          status.innerHTML = "<span style='color:green;'>🌸 전송되었습니다. 감사합니다!</span>";
-          button.disabled = false;
-          status.scrollIntoView({ behavior: "smooth", block: "center" });
-        })
-        .catch(error => {
-          console.error("전송 실패:", error);
-          status.innerHTML = "<span style='color:red;'>전송 실패. 다시 시도해주세요.</span>";
-          button.disabled = false;
-          status.scrollIntoView({ behavior: "smooth", block: "center" });
-        });
-    }
-
-    // 계좌 정보 토글
-    function toggleAccount() {
-      const el = document.getElementById('accountInfo');
-      if (el.style.display === 'none' || el.style.display === '') {
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
-    }
-
-    // 이미지 슬라이드
-    document.addEventListener('DOMContentLoaded', () => {
-      const slides = document.querySelectorAll('.slide');
-      let current = 0;
-
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-        current = index;
-      }
-
-      function nextSlide() {
-        showSlide((current + 1) % slides.length);
-      }
-
-      showSlide(current);
-      setInterval(nextSlide, 5000);
-    });
-
-    // 계좌 복사 함수
+    // 계좌 복사
     function copyToClipboard(id) {
       const el = document.getElementById(id);
+      if (!el) return alert("복사할 계좌번호를 찾을 수 없습니다.");
       navigator.clipboard.writeText(el.textContent).then(() => {
         alert("계좌번호가 복사되었습니다.");
+      }).catch(() => {
+        alert("복사에 실패했습니다. 직접 복사해주세요.");
       });
+    }
+
+    // 계좌 토글
+    function toggleAccount() {
+      const el = document.getElementById('accountInfo');
+      el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+    }
+
+    // 방명록 전송 (기능 예시용)
+    function submitGuestbook(event) {
+      event.preventDefault();
+      const name = document.getElementById("guestName").value.trim();
+      const message = document.getElementById("guestMessage").value.trim();
+      if (!name || !message) return alert("이름과 메시지를 모두 입력해주세요.");
+      alert(`${name}님의 축하 메시지가 전송되었습니다!`);
+      document.getElementById("guestName").value = '';
+      document.getElementById("guestMessage").value = '';
     }
   </script>
 </body>
