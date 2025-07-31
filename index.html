@@ -103,15 +103,15 @@
     }
 
     .date {
-      font-size: clamp(0.8rem, 3vw, 1rem);
-      margin-top: 2rem;
-      font-weight: 600;
-      animation: pulse 2s infinite ease-in-out;
-      color: #7f4f24;
-      background: transparent;
-      padding: 0;
-      font-family: 'Nanum Gothic', sans-serif;
-    }
+  font-size: clamp(1rem, 4vw, 1.3rem); /* 기존 clamp(1.2rem, 5vw, 1.5rem)에서 약간 줄임 */
+  margin-top: 2rem;
+  font-weight: 600;
+  animation: pulse 2s infinite ease-in-out;
+  color: #7f4f24;
+  background: transparent;
+  padding: 0;
+  font-family: 'Nanum Gothic', sans-serif;
+}
 
     .copy-btn {
       margin-left: 0.5rem;
@@ -153,24 +153,26 @@
     }
 
     #accountInfo {
-      color: #444;
-      background: #fff5e6;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-    }
+  color: #444;
+  background: #fff5e6;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  display: none;
+  font-size: 0.9rem;  /* 여기서 글씨 크기 조절 */
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
     #dday {
-      margin-top: 1rem;
-      font-size: clamp(0.8rem, 3vw, 1rem);
-      font-weight: 700;
-      color: #d17f3a;
-      animation: pulse 2s infinite ease-in-out;
-      user-select: none;
-      font-family: 'Nanum Gothic', sans-serif;
-    }
+  margin-top: 1rem;
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem); /* 기존 clamp(1rem,4vw,1.5rem)에서 작게 */
+  font-weight: 700;
+  color: #d17f3a;
+  animation: pulse 2s infinite ease-in-out;
+  user-select: none;
+  font-family: 'Nanum Gothic', sans-serif;
+}
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -188,54 +190,30 @@
       100% { transform: scale(1); }
     }
 
-    /* 모바일 화면 글씨 크기 및 줄간 최적화 */
+    /* 모바일 화면 글씨 크기 조정 */
     @media (max-width: 768px) {
-      .slideshow {
-        height: 280px;
-      }
-      header h1 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-      }
-      header h2, .date, .info {
-        font-size: 1.15rem;
-        line-height: 1.4;
-      }
-      #dday {
-        font-size: 1.3rem;
-        line-height: 1.3;
-      }
+      .slideshow { height: 300px; }
+      header h1 { font-size: 1.8rem; }
+      header h2, .date, .info { font-size: 1.3rem; }
+      #dday { font-size: 1.4rem; }
       .copy-btn, .toggle-account-btn {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
       .message {
-        font-size: 1rem;
-        line-height: 1.4;
+        font-size: 1.1rem;
       }
     }
 
     @media (max-width: 480px) {
-      .slideshow {
-        height: 180px;
-      }
-      header h1 {
-        font-size: 1.4rem;
-        line-height: 1.2;
-      }
-      header h2, .date, .info {
-        font-size: 1rem;
-        line-height: 1.3;
-      }
-      #dday {
-        font-size: 1rem;
-        line-height: 1.2;
-      }
+      .slideshow { height: 200px; }
+      header h1 { font-size: 1.6rem; }
+      header h2, .date, .info { font-size: 1.2rem; }
+      #dday { font-size: 1.3rem; }
       .copy-btn, .toggle-account-btn {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
       .message {
-        font-size: 0.95rem;
-        line-height: 1.35;
+        font-size: 1rem;
       }
     }
   </style>
