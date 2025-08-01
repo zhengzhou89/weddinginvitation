@@ -35,10 +35,10 @@
 
     .hero {
       position: relative;
-      width: calc(100vw + 2rem); /* 좌우 1rem padding 보정 */
-      margin: 0 -1rem;
+      width: calc(100% + 2rem); /* 좌우 padding 1rem씩 덮도록 */
+      margin-left: -1rem;
       height: 100vh;
-      background: url('image3.jpg') center center / cover no-repeat;
+      background: url('image1.jpg') center center / cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -178,29 +178,40 @@
       font-weight: 400;
     }
 
-    .date {
-      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-      margin-top: 2rem;
-      font-weight: 600;
-      animation: pulse 2s infinite ease-in-out;
-      color: #7f4f24;
-      background: transparent;
-      padding: 0;
-      font-family: 'Nanum Gothic', sans-serif;
+    #accountInfo {
+      color: #444;
+      background: #fff5e6;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center; /* 글자 가운데 정렬 */
+      display: none;
+      font-size: 0.9rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.4s ease;
+    }
+
+    /* 계좌번호 + 복사 버튼 한 줄에 정렬 */
+    .account-row {
+      display: flex;
+      justify-content: center; /* 가운데 정렬 */
+      align-items: center;
+      gap: 0.5rem; /* 버튼과 계좌번호 사이 간격 */
+      margin-bottom: 0.7rem; /* 줄 간 간격 */
+      flex-wrap: wrap;
+      font-weight: 500;
     }
 
     .copy-btn {
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
       border: none;
       background-color: #d17f3a;
       border-radius: 0.3rem;
       cursor: pointer;
-      min-height: 44px;
+      min-height: auto;
       color: #fff;
       transition: background-color 0.3s ease;
-      vertical-align: middle;
       font-family: 'Nanum Gothic', sans-serif;
       font-weight: 600;
     }
@@ -228,17 +239,15 @@
       background-color: #a45d23;
     }
 
-    #accountInfo {
-      color: #444;
-      background: #fff5e6;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-      font-size: 0.9rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: all 0.4s ease;
+    .date {
+      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+      margin-top: 2rem;
+      font-weight: 600;
+      animation: pulse 2s infinite ease-in-out;
+      color: #7f4f24;
+      background: transparent;
+      padding: 0;
+      font-family: 'Nanum Gothic', sans-serif;
     }
 
     #dday {
@@ -355,12 +364,16 @@
   <div class="info">
     <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
     <div id="accountInfo" aria-live="polite" aria-atomic="true">
-      신랑 이정주<br />
-      카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
-      <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
-      신부 장지이<br />
-      카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
-      <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
+      <div class="account-row">
+        신랑 이정주&nbsp;&nbsp;
+        카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
+        <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button>
+      </div>
+      <div class="account-row">
+        신부 장지이&nbsp;&nbsp;
+        카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
+        <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button>
+      </div>
     </div>
   </div>
 
@@ -418,7 +431,7 @@
     function copyToClipboard(id) {
       const el = document.getElementById(id);
       navigator.clipboard.writeText(el.textContent).then(() => {
-        showToast("계좌번호가 복사되었습니다. 감사합니다❤️");
+        showToast("✨ 계좌번호가 복사되었습니다. 감사합니다!");
       });
     }
 
