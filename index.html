@@ -9,10 +9,6 @@
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
   <meta property="og:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="이정주❤️장지이 결혼합니다." />
-  <meta name="twitter:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
@@ -35,10 +31,12 @@
 
     .hero {
       position: relative;
-      width: calc(100% + 2rem); /* 좌우 padding 1rem씩 덮도록 */
-      margin-left: -1rem;
+      width: 100vw;
+      max-width: 100%;
       height: 100vh;
-      background: url('image1.jpg') center center / cover no-repeat;
+      margin-left: calc(-1rem); /* 좌우 패딩을 덮기 위해 좌측 음수 마진 */
+      margin-right: calc(-1rem);
+      background: url('image3.jpg') center center / cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -184,20 +182,19 @@
       border-radius: 0.75rem;
       padding: 1rem;
       margin-top: 1rem;
-      text-align: center; /* 글자 가운데 정렬 */
+      text-align: center;
       display: none;
       font-size: 0.9rem;
       font-family: 'Noto Sans KR', sans-serif;
       transition: all 0.4s ease;
     }
 
-    /* 계좌번호 + 복사 버튼 한 줄에 정렬 */
     .account-row {
       display: flex;
-      justify-content: center; /* 가운데 정렬 */
+      justify-content: center;
       align-items: center;
-      gap: 0.5rem; /* 버튼과 계좌번호 사이 간격 */
-      margin-bottom: 0.7rem; /* 줄 간 간격 */
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
       flex-wrap: wrap;
       font-weight: 500;
     }
@@ -281,6 +278,7 @@
       font-family: 'Nanum Gothic', sans-serif;
       font-weight: 600;
       user-select: none;
+      white-space: nowrap; /* 한 줄로 나오도록 설정 */
     }
 
     @keyframes fadeIn {
@@ -364,16 +362,12 @@
   <div class="info">
     <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
     <div id="accountInfo" aria-live="polite" aria-atomic="true">
-      <div class="account-row">
-        신랑 이정주&nbsp;&nbsp;
-        카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
-        <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button>
-      </div>
-      <div class="account-row">
-        신부 장지이&nbsp;&nbsp;
-        카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
-        <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button>
-      </div>
+      신랑 이정주<br />
+      카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
+      <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
+      신부 장지이<br />
+      카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
+      <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
     </div>
   </div>
 
