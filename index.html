@@ -25,6 +25,48 @@
       padding-bottom: 150px;
       line-height: 1.7;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('image3.jpg') center center / cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 1rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero-overlay h1 {
+      font-size: 2.5rem;
+      font-family: 'Nanum Pen Script', cursive;
+      margin-bottom: 1rem;
+    }
+
+    .hero-overlay p {
+      font-size: 1.2rem;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    .scroll-indicator {
+      display: block;
+      margin-top: 2rem;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      user-select: none;
+      cursor: pointer;
     }
 
     header {
@@ -209,19 +251,18 @@
       100% { transform: scale(1); }
     }
 
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
     @media (max-width: 768px) {
       .slideshow { height: 300px; }
       header h1 { font-size: 1.8rem; }
       header h2, .date, .info { font-size: 1.3rem; }
       #dday { font-size: 1.8rem; }
-      .copy-btn, .toggle-account-btn {
-        font-size: 1rem;
-      }
-      .message {
-        font-size: 1.4rem;
-        padding: 1.5rem 2rem;
-        min-height: 180px;
-      }
+      .copy-btn, .toggle-account-btn { font-size: 1rem; }
+      .message { font-size: 1.4rem; padding: 1.5rem 2rem; min-height: 180px; }
     }
 
     @media (max-width: 480px) {
@@ -229,22 +270,22 @@
       header h1 { font-size: 1.6rem; }
       header h2, .date, .info { font-size: 1.2rem; }
       #dday { font-size: 1.6rem; }
-      .copy-btn, .toggle-account-btn {
-        font-size: 0.95rem;
-      }
-      .copy-btn {
-        margin-left: 0;
-        margin-top: 0.5rem;
-      }
-      .message {
-        font-size: 1.3rem;
-        padding: 1.2rem 1.5rem;
-        min-height: 150px;
-      }
+      .copy-btn, .toggle-account-btn { font-size: 0.95rem; }
+      .copy-btn { margin-left: 0; margin-top: 0.5rem; }
+      .message { font-size: 1.3rem; padding: 1.2rem 1.5rem; min-height: 150px; }
     }
   </style>
 </head>
 <body>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>이정주 ❤️ 장지이</h1>
+      <p>2025.10.26 | 충주 파라다이스 웨딩홀</p>
+      <span class="scroll-indicator" onclick="scrollToContent()">▼</span>
+    </div>
+  </section>
+
   <header>
     <h1>이정주❤️장지이 결혼합니다.</h1>
     <h2>두 사람의 마음을 고이 담아<br />소중한 분들을 초대합니다.</h2>
@@ -263,7 +304,6 @@
   </div>
 
   <div class="message" id="message"></div>
-
   <div id="dday" aria-live="polite" aria-atomic="true"></div>
 
   <div class="date">
@@ -290,11 +330,10 @@
       const weddingDate = new Date('2025-10-26T14:30:00+09:00');
       const now = new Date();
       const diff = weddingDate - now;
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
       if (days <= 0) {
         ddayEl.textContent = "🎉 오늘은 우리의 결혼식 날입니다! 🎉";
+        ddayEl.style.animation = 'none';
       } else {
         ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
       }
@@ -314,21 +353,30 @@
       }
     }
 
+    function scrollToContent() {
+      const nextSection = document.querySelector('header');
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyToClipboard(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        alert("✨ 계좌번호가 복사되었습니다. 감사합니다!");
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
       let current = 0;
-
       function showSlide(index) {
         slides.forEach((slide, i) => {
           slide.classList.toggle('active', i === index);
         });
         current = index;
       }
-
       function nextSlide() {
         showSlide((current + 1) % slides.length);
       }
-
       showSlide(current);
       setInterval(nextSlide, 5000);
 
@@ -361,13 +409,6 @@
         typeWriter(msgEl, messageText);
       }
     });
-
-    function copyToClipboard(id) {
-      const el = document.getElementById(id);
-      navigator.clipboard.writeText(el.textContent).then(() => {
-        alert("✨ 계좌번호가 복사되었습니다. 감사합니다!");
-      });
-    }
   </script>
 </body>
 </html>
