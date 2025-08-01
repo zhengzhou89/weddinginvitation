@@ -2,37 +2,35 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>우리 결혼합니다</title>
-  <meta name="description" content="이정주와 장지이의 결혼식에 초대합니다. 2025년 10월 26일 충주 파라다이스 웨딩홀에서 만나요!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="이정주❤️장지이 결혼합니다." />
   <meta property="og:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
   <meta property="og:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
-  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zhengzhou89.github.io/weddinginvitation/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="이정주❤️장지이 결혼합니다." />
+  <meta name="twitter:description" content="2025년 10월 26일, 충주 파라다이스 웨딩홀에서 결혼식이 열립니다." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/zhengzhou89/weddinginvitation/main/image1.jpg" />
+  <title>이정주❤️장지이 결혼합니다</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
-
-    html, body {
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
       margin: 0;
-      padding: 0 1rem;
-      font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
-      background: #f3e9dc;
-      color: #4b382a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-bottom: 150px;
-      line-height: 1.7;
-      overflow-x: hidden;
+      padding: 0;
+      background-color: #fffaf0;
+      color: #333;
       scroll-behavior: smooth;
     }
-
     .hero {
       position: relative;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
-      background: url('image3.jpg') center center / cover no-repeat;
+      min-height: 100svh;
+      background-image: url('image3.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,25 +39,20 @@
       overflow: hidden;
       z-index: 1;
     }
-
     .hero-overlay {
       background: rgba(0, 0, 0, 0.4);
       padding: 2rem;
       border-radius: 1rem;
       animation: fadeIn 2s ease-in-out;
     }
-
     .hero-overlay h1 {
       font-size: 2.5rem;
       font-family: 'Nanum Pen Script', cursive;
       margin-bottom: 1rem;
     }
-
     .hero-overlay p {
       font-size: 1.2rem;
-      font-family: 'Nanum Gothic', sans-serif;
     }
-
     .scroll-indicator {
       display: block;
       margin-top: 2rem;
@@ -68,216 +61,16 @@
       user-select: none;
       cursor: pointer;
     }
-
-    header {
-      margin-top: 40px;
-      animation: slideDown 1.5s ease-out;
-    }
-
-    header h1 {
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 600;
-      color: #7f4f24;
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-      margin-bottom: 0.5rem;
-    }
-
-    header h2 {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 500;
-      color: #8c5a2e;
-      font-size: clamp(1.5rem, 5vw, 1.8rem);
-      margin-bottom: 2rem;
-    }
-
-    .slideshow {
-      position: relative;
-      width: 90%;
-      max-width: 600px;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(127, 79, 36, 0.3);
-      margin-bottom: 2rem;
-      background: #f9f1e7;
-    }
-
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      object-fit: contain;
-      object-position: center center;
-      background-color: #fff;
-      border-radius: 16px;
-      user-select: none;
-    }
-
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .message {
-      font-family: 'Nanum Pen Script', cursive;
-      background: #f1d9a7;
-      width: 90%;
-      max-width: 600px;
-      font-size: 1.5rem;
-      line-height: 2;
-      font-weight: 400;
-      padding: 2rem 2.5rem;
-      margin: 2rem auto;
-      border-radius: 1rem;
-      color: #6a4b23;
-      box-sizing: border-box;
-      animation: fadeIn 2s ease-in;
-      min-height: 220px;
-      white-space: pre-wrap;
-      user-select: none;
-    }
-
-    .info,
-    #accountInfo,
-    .date {
-      width: 90%;
-      max-width: 600px;
-    }
-
-    .info,
-    #accountInfo {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      background: #fff5e6;
-      border-radius: 1rem;
-      margin-top: 2rem;
-      padding: 1.8rem 2rem;
-      color: #5a4427;
-      box-sizing: border-box;
-      animation: fadeIn 2s ease-in;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 400;
-    }
-
-    .date {
-      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-      margin-top: 2rem;
-      font-weight: 600;
-      animation: pulse 2s infinite ease-in-out;
-      color: #7f4f24;
-      background: transparent;
-      padding: 0;
-      font-family: 'Nanum Gothic', sans-serif;
-    }
-
-    .copy-btn {
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
-      border: none;
-      background-color: #d17f3a;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      min-height: 44px;
-      color: #fff;
-      transition: background-color 0.3s ease;
-      vertical-align: middle;
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 600;
-    }
-
-    .copy-btn:hover {
-      background-color: #a45d23;
-    }
-
-    button.toggle-account-btn {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      background-color: #d17f3a;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      min-height: 44px;
-      transition: background-color 0.3s ease;
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 700;
-    }
-
-    button.toggle-account-btn:hover {
-      background-color: #a45d23;
-    }
-
-    #accountInfo {
-      color: #444;
-      background: #fff5e6;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-      font-size: 0.9rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: all 0.4s ease;
-    }
-
-    #dday {
-      margin-top: 1rem;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #d17f3a;
-      animation: pulse 2s infinite ease-in-out;
-      user-select: none;
-      font-family: 'Nanum Gothic', sans-serif;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(10px); }
     }
-
-    @media (max-width: 768px) {
-      .slideshow { height: 300px; }
-      header h1 { font-size: 1.8rem; }
-      header h2, .date, .info { font-size: 1.3rem; }
-      #dday { font-size: 1.8rem; }
-      .copy-btn, .toggle-account-btn { font-size: 1rem; }
-      .message { font-size: 1.4rem; padding: 1.5rem 2rem; min-height: 180px; }
-    }
-
-    @media (max-width: 480px) {
-      .slideshow { height: 200px; }
-      header h1 { font-size: 1.6rem; }
-      header h2, .date, .info { font-size: 1.2rem; }
-      #dday { font-size: 1.6rem; }
-      .copy-btn, .toggle-account-btn { font-size: 0.95rem; }
-      .copy-btn { margin-left: 0; margin-top: 0.5rem; }
-      .message { font-size: 1.3rem; padding: 1.2rem 1.5rem; min-height: 150px; }
+    header, section, footer {
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
-
   <section class="hero">
     <div class="hero-overlay">
       <h1>이정주 ❤️ 장지이</h1>
@@ -286,129 +79,17 @@
     </div>
   </section>
 
-  <header>
-    <h1>이정주❤️장지이 결혼합니다.</h1>
-    <h2>두 사람의 마음을 고이 담아<br />소중한 분들을 초대합니다.</h2>
+  <header id="mainContent">
+    <!-- 기존 청첩장 콘텐츠가 여기에 이어집니다 -->
+    <h2>초대합니다</h2>
+    <p>소중한 분들을 저희의 결혼식에 초대합니다.</p>
   </header>
 
-  <div class="slideshow">
-    <img src="image1.jpg" class="slide active" alt="신랑신부 웨딩사진1" loading="eager" />
-    <img src="image2.jpg" class="slide" alt="신랑신부 웨딩사진2" loading="eager" />
-    <img src="image3.jpg" class="slide" alt="신랑신부 웨딩사진3" loading="lazy" />
-    <img src="image4.jpg" class="slide" alt="신랑신부 웨딩사진4" loading="lazy" />
-    <img src="image5.jpg" class="slide" alt="신랑신부 웨딩사진5" loading="lazy" />
-    <img src="image6.jpg" class="slide" alt="신랑신부 웨딩사진6" loading="lazy" />
-    <img src="image7.jpg" class="slide" alt="신랑신부 웨딩사진7" loading="lazy" />
-    <img src="image8.jpg" class="slide" alt="신랑신부 웨딩사진8" loading="lazy" />
-    <img src="image9.jpg" class="slide" alt="신랑신부 웨딩사진9" loading="lazy" />
-  </div>
-
-  <div class="message" id="message"></div>
-  <div id="dday" aria-live="polite" aria-atomic="true"></div>
-
-  <div class="date">
-    2025.10.26.(일) PM 2:30<br />
-    충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br />
-    📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" rel="noopener noreferrer" style="color:#a45d23;">웨딩홀 위치 보기 (카카오맵)</a>
-  </div>
-
-  <div class="info">
-    <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
-    <div id="accountInfo" aria-live="polite" aria-atomic="true">
-      신랑 이정주<br />
-      카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
-      <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
-      신부 장지이<br />
-      카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
-      <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
-    </div>
-  </div>
-
   <script>
-    function updateDday() {
-      const ddayEl = document.getElementById('dday');
-      const weddingDate = new Date('2025-10-26T14:30:00+09:00');
-      const now = new Date();
-      const diff = weddingDate - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      if (days <= 0) {
-        ddayEl.textContent = "🎉 오늘은 우리의 결혼식 날입니다! 🎉";
-        ddayEl.style.animation = 'none';
-      } else {
-        ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
-      }
-    }
-    setInterval(updateDday, 60000);
-    updateDday();
-
-    function toggleAccount() {
-      const el = document.getElementById('accountInfo');
-      const btn = document.querySelector('.toggle-account-btn');
-      if (el.style.display === 'none' || el.style.display === '') {
-        el.style.display = 'block';
-        btn.textContent = "💌 마음 전하실 곳 숨기기";
-      } else {
-        el.style.display = 'none';
-        btn.textContent = "💌 마음 전하실 곳 보기";
-      }
-    }
-
     function scrollToContent() {
-      const nextSection = document.querySelector('header');
+      const nextSection = document.getElementById('mainContent');
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
-
-    function copyToClipboard(id) {
-      const el = document.getElementById(id);
-      navigator.clipboard.writeText(el.textContent).then(() => {
-        alert("✨ 계좌번호가 복사되었습니다. 감사합니다!");
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const slides = document.querySelectorAll('.slide');
-      let current = 0;
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-        current = index;
-      }
-      function nextSlide() {
-        showSlide((current + 1) % slides.length);
-      }
-      showSlide(current);
-      setInterval(nextSlide, 5000);
-
-      const messageText = `황금빛 가을 햇살 아래
-두 사람이 사랑과 믿음으로
-새로운 길을 함께 걷기로 약속합니다.
-
-살랑이는 바람에 실려 온 낙엽처럼
-따뜻한 축복을 전해 주세요❤️`;
-
-      const msgEl = document.getElementById('message');
-
-      function typeWriter(element, text, speed = 80) {
-        let i = 0;
-        function typing() {
-          if (i < text.length) {
-            element.innerHTML += (text[i] === '\n') ? '<br />' : text[i];
-            i++;
-            setTimeout(typing, speed);
-          }
-        }
-        typing();
-      }
-
-      if (document.fonts) {
-        document.fonts.ready.then(() => {
-          typeWriter(msgEl, messageText);
-        });
-      } else {
-        typeWriter(msgEl, messageText);
-      }
-    });
   </script>
 </body>
 </html>
