@@ -34,7 +34,7 @@
       width: 100vw;
       max-width: 100%;
       height: 100vh;
-      margin-left: calc(-1rem); /* 좌우 패딩을 덮기 위해 좌측 음수 마진 */
+      margin-left: calc(-1rem);
       margin-right: calc(-1rem);
       background: url('image3.jpg') center center / cover no-repeat;
       display: flex;
@@ -174,6 +174,7 @@
       animation: fadeIn 2s ease-in;
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 400;
+      text-align: center;
     }
 
     #accountInfo {
@@ -182,7 +183,6 @@
       border-radius: 0.75rem;
       padding: 1rem;
       margin-top: 1rem;
-      text-align: center;
       display: none;
       font-size: 0.9rem;
       font-family: 'Noto Sans KR', sans-serif;
@@ -195,8 +195,9 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.7rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* 줄바꿈 방지 */
       font-weight: 500;
+      text-align: center;
     }
 
     .copy-btn {
@@ -317,7 +318,6 @@
       header h2, .date, .info { font-size: 1.2rem; }
       #dday { font-size: 1.6rem; }
       .copy-btn, .toggle-account-btn { font-size: 0.95rem; }
-      .copy-btn { margin-left: 0; margin-top: 0.5rem; }
       .message { font-size: 1.3rem; padding: 1.2rem 1.5rem; min-height: 150px; }
     }
   </style>
@@ -362,12 +362,16 @@
   <div class="info">
     <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
     <div id="accountInfo" aria-live="polite" aria-atomic="true">
-      신랑 이정주<br />
-      카카오뱅크 <span id="groomAccount">3333-12-1138343</span>
-      <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button><br /><br />
-      신부 장지이<br />
-      카카오뱅크 <span id="brideAccount">3333-27-1213847</span>
-      <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button><br />
+      <div class="account-row">
+        <span>신랑 이정주&nbsp;&nbsp;카카오뱅크</span>
+        <span id="groomAccount">3333-12-1138343</span>
+        <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button>
+      </div>
+      <div class="account-row">
+        <span>신부 장지이&nbsp;&nbsp;카카오뱅크</span>
+        <span id="brideAccount">3333-27-1213847</span>
+        <button class="copy-btn" onclick="copyToClipboard('brideAccount')">복사</button>
+      </div>
     </div>
   </div>
 
