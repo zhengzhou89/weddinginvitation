@@ -190,7 +190,7 @@ function updateDday(){
   const dday=document.getElementById('dday');
   const diff=new Date('2025-10-26T14:30:00+09:00')-new Date();
   const days=Math.floor(diff/(1000*60*60*24));
-  dday.textContent=days<=0?"🎉 오늘은 우리의 결혼식 날입니다! 🎉":`결혼식까지 ${days}일 남았습니다.`;
+  dday.textContent=days<=0?"🎉 오늘은 우리의 결혼식 날이에요~! 🎉":`🎉 결혼식까지 ${days}일 남았어요! 🎉`;
 }
 setInterval(updateDday,60000); updateDday();
 
