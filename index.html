@@ -13,131 +13,54 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
 
-/* 공통 컨테이너 스타일 */
-.container {
-  width: 90%;
-  max-width: 600px;
-  margin: 2rem auto;
-  box-sizing: border-box;
-}
-
-/* body 및 전체 */
 html, body {
-  margin: 0; padding: 0 1rem;
-  font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
-  background: #f3e9dc;
-  color: #4b382a;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  padding-bottom: 150px; line-height: 1.7; overflow-x: hidden; scroll-behavior: smooth;
+  margin:0; padding:0 1rem; font-family:'Noto Sans KR', 'Nanum Gothic', sans-serif;
+  background:#f3e9dc; color:#4b382a; display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding-bottom:150px; line-height:1.7; overflow-x:hidden; scroll-behavior:smooth;
 }
 
-/* hero */
+.container, .slideshow, .message, .info, #accountInfo, .date {
+  width:90%; max-width:600px; margin:2rem auto; box-sizing:border-box;
+}
+
 .hero {
-  position: relative; width: 100vw; max-width: 100%; height: 100vh;
-  margin-left: calc(-1rem); margin-right: calc(-1rem);
-  background: url('image17.jpg') center center / cover no-repeat;
-  display: flex; justify-content: center; align-items: center; color: #fff; text-align: center;
-  overflow: hidden; z-index: 1;
+  position:relative; width:100vw; height:100vh; margin-left:-1rem; margin-right:-1rem;
+  background:url('image17.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; color:#fff; text-align:center;
 }
-.hero-overlay {
-  background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 1rem;
-  animation: fadeIn 2s ease-in-out;
-}
-.hero-overlay h1 { font-size: 2.5rem; font-family: 'Nanum Pen Script', cursive; margin-bottom: 1rem; }
-.hero-overlay p { font-size: 1.2rem; font-family: 'Nanum Gothic', sans-serif; }
+.hero-overlay { background:rgba(0,0,0,0.4); padding:2rem; border-radius:1rem; animation:fadeIn 2s ease-in-out; }
+.hero-overlay h1 { font-size:2.5rem; font-family:'Nanum Pen Script', cursive; margin-bottom:1rem; }
+.hero-overlay h2 { font-size:1.2rem; font-family:'Nanum Gothic', sans-serif; margin-bottom:0.5rem; }
 
-/* 모든 주요 컨테이너 일관되게 적용 */
-.slideshow,
-.message,
-.info,
-#accountInfo,
-.date {
-  width: 90%;
-  max-width: 600px;
-  margin: 2rem auto;
-  box-sizing: border-box;
-}
-
-/* slideshow */
-.slideshow {
-  position: relative; height: 400px; overflow: hidden;
-  border-radius: 16px; box-shadow: 0 8px 24px rgba(127,79,36,0.3); background: #f9f1e7;
-}
-.slide {
-  position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; transition:opacity 1s ease-in-out;
-  object-fit: contain; background-color:#fff; border-radius:16px; user-select:none;
-}
+.slideshow { position:relative; height:400px; overflow:hidden; border-radius:16px; box-shadow:0 8px 24px rgba(127,79,36,0.3); background:#f9f1e7; }
+.slide { position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; transition:opacity 1s ease-in-out; object-fit:contain; border-radius:16px; background:#fff; }
 .slide.active { opacity:1; z-index:1; }
-.sr-only { position:absolute; width:1px;height:1px; padding:0;margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
-/* message */
-.message {
-  font-family:'Nanum Pen Script', cursive; background:#f1d9a7;
-  font-size:1.5rem; line-height:2; font-weight:400; padding:2rem 2.5rem;
-  border-radius:1rem; color:#6a4b23; animation:fadeIn 2s ease-in; min-height:220px; white-space:pre-wrap;
-}
+.message { font-family:'Nanum Pen Script', cursive; background:#f1d9a7; font-size:1.5rem; line-height:2; font-weight:400; padding:2rem 2.5rem; border-radius:1rem; color:#6a4b23; animation:fadeIn 2s ease-in; min-height:220px; white-space:pre-wrap; }
 
-/* info & account */
-.info {
-  font-size:1.05rem; line-height:1.9; background:#fff0e0; border-radius:1rem; padding:2rem;
-  color:#5a4427; box-shadow:0 8px 24px rgba(209,127,58,0.3); font-family:'Noto Sans KR',sans-serif; font-weight:400;
-}
-#accountInfo {
-  display:none; color:#444; background:#fff5e6; border-radius:0.75rem; padding:1.5rem; text-align:center;
-  font-size:0.9rem; font-family:'Noto Sans KR',sans-serif; transition:all 0.4s ease;
-  box-shadow:0 4px 12px rgba(209,127,58,0.2);
-}
+.info { font-size:1.05rem; line-height:1.9; background:#fff0e0; border-radius:1rem; padding:2rem; color:#5a4427; box-shadow:0 8px 24px rgba(209,127,58,0.3); font-family:'Noto Sans KR',sans-serif; font-weight:400; }
+#accountInfo { display:none; color:#444; background:#fff5e6; border-radius:0.75rem; padding:1.5rem; text-align:center; font-size:0.9rem; transition:all 0.4s ease; box-shadow:0 4px 12px rgba(209,127,58,0.2); }
 #accountInfo .account-row { text-align:center; margin-bottom:1rem; }
-#accountInfo .account-row > .name { font-weight:600; margin-bottom:0.4rem; }
-#accountInfo .account-row > .bank-account-copy { display:flex; justify-content:center; align-items:center; gap:0.5rem; }
-.copy-btn {
-  padding:0.3rem 0.8rem; font-size:0.9rem; border:none; background-color:#d17f3a;
-  border-radius:0.3rem; cursor:pointer; min-height:auto; color:#fff; transition:background-color 0.3s ease;
-  font-family:'Nanum Gothic',sans-serif; font-weight:600;
-}
-.copy-btn:hover { background-color:#a45d23; }
-button.toggle-account-btn {
-  width:100%; padding:0.75rem 1rem; font-size:1rem; background-color:#d17f3a; color:white; border:none;
-  border-radius:0.5rem; cursor:pointer; min-height:44px; transition:background-color 0.3s ease; font-family:'Nanum Gothic',sans-serif; font-weight:700;
-}
-button.toggle-account-btn:hover { background-color:#a45d23; }
+#accountInfo .name { font-weight:600; margin-bottom:0.4rem; }
+.bank-account-copy { display:flex; justify-content:center; align-items:center; gap:0.5rem; }
+.copy-btn, .toggle-account-btn { font-family:'Nanum Gothic',sans-serif; font-weight:600; border:none; cursor:pointer; }
+.copy-btn { padding:0.3rem 0.8rem; font-size:0.9rem; border-radius:0.3rem; background:#d17f3a; color:#fff; transition:0.3s; }
+.copy-btn:hover { background:#a45d23; }
+.toggle-account-btn { width:100%; padding:0.75rem 1rem; font-size:1rem; background:#d17f3a; color:#fff; border-radius:0.5rem; font-weight:700; }
+.toggle-account-btn:hover { background:#a45d23; }
 
-/* date */
-.date {
-  font-size:clamp(0.6rem,2.5vw,0.8rem); font-weight:600; color:#7f4f24;
-  padding:0; animation:pulse 2s infinite ease-in-out;
-  font-family:'Nanum Gothic',sans-serif;
-}
+.date { font-size:clamp(0.6rem,2.5vw,0.8rem); font-weight:600; color:#7f4f24; padding:0; animation:pulse 2s infinite ease-in-out; font-family:'Nanum Gothic',sans-serif; }
 
-/* floating heart/leaf */
 .floating-char { position:absolute; font-size:18px; opacity:0; pointer-events:none; animation:floatChar 3s linear forwards; }
 
-/* keyframes */
 @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
 @keyframes floatChar { 0%{transform:translateY(0) rotate(0deg);opacity:0;} 10%{opacity:1;} 100%{transform:translateY(-60px) rotate(360deg);opacity:0;} }
 
-/* responsive */
-@media(max-width:768px){
-  .slideshow{height:300px;}
-  .date,.info{font-size:1.3rem;}
-  #dday{font-size:1.8rem;}
-  .copy-btn,.toggle-account-btn{font-size:1rem;}
-  .message{font-size:1.4rem;padding:1.5rem 2rem;min-height:180px;}
-}
-@media(max-width:480px){
-  .slideshow{height:200px;}
-  .date,.info{font-size:1.2rem;}
-  #dday{font-size:1.6rem;}
-  .copy-btn,.toggle-account-btn{font-size:0.95rem;}
-  .copy-btn{margin-left:0;margin-top:0.5rem;}
-  .message{font-size:1.3rem;padding:1.2rem 1.5rem;min-height:150px;}
-}
+@media(max-width:768px){ .slideshow{height:300px;} .date,.info{font-size:1.3rem;} #dday{font-size:1.8rem;} .copy-btn,.toggle-account-btn{font-size:1rem;} .message{font-size:1.4rem;padding:1.5rem 2rem;min-height:180px;} }
+@media(max-width:480px){ .slideshow{height:200px;} .date,.info{font-size:1.2rem;} #dday{font-size:1.6rem;} .copy-btn,.toggle-account-btn{font-size:0.95rem;} .copy-btn{margin-left:0;margin-top:0.5rem;} .message{font-size:1.3rem;padding:1.2rem 1.5rem;min-height:150px;} }
 
-/* toast message */
-.toast-message { position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-  background:#d17f3a; color:#fff; padding:10px 20px; border-radius:5px; z-index:1000; opacity:0; transition:opacity 0.3s ease-in-out;
-  font-family:'Nanum Gothic',sans-serif; font-weight:600; user-select:none; white-space:nowrap; }
+.toast-message { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#d17f3a; color:#fff; padding:10px 20px; border-radius:5px; z-index:1000; opacity:0; transition:0.3s; font-family:'Nanum Gothic',sans-serif; font-weight:600; white-space:nowrap; }
 </style>
 </head>
 
@@ -145,42 +68,41 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
 <section class="hero">
   <div class="hero-overlay">
     <h1>이정주 ❤️ 장지이</h1>
-    <h2>두 사람의 마음을 고이 담아<br />소중한 분들을 초대합니다.</h2>
+    <h2>두 사람의 마음을 고이 담아<br>소중한 분들을 초대합니다.</h2>
     <p>2025.10.26 | 충주 파라다이스 웨딩홀</p>
     <span class="scroll-indicator" onclick="scrollToContent()">▼</span>
   </div>
 </section>
 
 <div class="slideshow" aria-label="웨딩 사진 슬라이드쇼" tabindex="0">
-  <img src="image1.jpg" class="slide active" alt="신랑신부 웨딩사진1" loading="eager" />
-  <img src="image2.jpg" class="slide" alt="신랑신부 웨딩사진2" loading="lazy" />
-<img src="image3.jpg" class="slide" alt="신랑신부 웨딩사진3" loading="lazy" /> 
-<img src="image4.jpg" class="slide" alt="신랑신부 웨딩사진4" loading="lazy" /> 
-<img src="image5.jpg" class="slide" alt="신랑신부 웨딩사진5" loading="lazy" /> 
-<img src="image6.jpg" class="slide" alt="신랑신부 웨딩사진6" loading="lazy" /> 
-<img src="image7.jpg" class="slide" alt="신랑신부 웨딩사진7" loading="lazy" /> 
-<img src="image8.jpg" class="slide" alt="신랑신부 웨딩사진8" loading="lazy" /> 
-<img src="image9.jpg" class="slide" alt="신랑신부 웨딩사진9" loading="lazy" /> 
-<img src="image10.jpg" class="slide" alt="신랑신부 웨딩사진10" loading="lazy" /> 
-<img src="image11.jpg" class="slide" alt="신랑신부 웨딩사진11" loading="lazy" /> 
-<img src="image12.jpg" class="slide" alt="신랑신부 웨딩사진12" loading="lazy" /> 
-<img src="image13.jpg" class="slide" alt="신랑신부 웨딩사진13" loading="lazy" /> 
-<img src="image14.jpg" class="slide" alt="신랑신부 웨딩사진14" loading="lazy" /> 
-<img src="image15.jpg" class="slide" alt="신랑신부 웨딩사진15" loading="lazy" /> 
-<img src="image16.jpg" class="slide" alt="신랑신부 웨딩사진16" loading="lazy" />
+  <img src="image1.jpg" class="slide active" alt="신랑신부 웨딩사진1" loading="eager">
+  <img src="image2.jpg" class="slide" alt="신랑신부 웨딩사진2" loading="lazy">
+  <img src="image3.jpg" class="slide" alt="신랑신부 웨딩사진3" loading="lazy">
+  <img src="image4.jpg" class="slide" alt="신랑신부 웨딩사진4" loading="lazy" />
+  <img src="image5.jpg" class="slide" alt="신랑신부 웨딩사진5" loading="lazy" />
+  <img src="image6.jpg" class="slide" alt="신랑신부 웨딩사진6" loading="lazy" />
+  <img src="image7.jpg" class="slide" alt="신랑신부 웨딩사진7" loading="lazy" />
+  <img src="image8.jpg" class="slide" alt="신랑신부 웨딩사진8" loading="lazy" />
+  <img src="image9.jpg" class="slide" alt="신랑신부 웨딩사진9" loading="lazy" />
+  <img src="image10.jpg" class="slide" alt="신랑신부 웨딩사진10" loading="lazy" />
+  <img src="image11.jpg" class="slide" alt="신랑신부 웨딩사진11" loading="lazy" />
+  <img src="image12.jpg" class="slide" alt="신랑신부 웨딩사진12" loading="lazy" />
+  <img src="image13.jpg" class="slide" alt="신랑신부 웨딩사진13" loading="lazy" />
+  <img src="image14.jpg" class="slide" alt="신랑신부 웨딩사진14" loading="lazy" />
+  <img src="image15.jpg" class="slide" alt="신랑신부 웨딩사진15" loading="lazy" />
+  <img src="image16.jpg" class="slide" alt="신랑신부 웨딩사진16" loading="lazy" />
+
   <div class="sr-only" aria-live="polite" aria-atomic="true" id="slide-status">1 / 16</div>
 </div>
 
 <div class="message" id="message"></div>
 
-<div id="dday-wrapper">
-  <div id="dday" aria-live="polite" aria-atomic="true"></div>
-</div>
+<div id="dday-wrapper"><div id="dday" aria-live="polite" aria-atomic="true"></div></div>
 
 <div class="date">
-  2025.10.26.(일) PM 2:30<br />
-  충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br />
-  📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" rel="noopener noreferrer" style="color:#fff;">웨딩홀 위치 보기 (카카오맵)</a>
+  2025.10.26.(일) PM 2:30<br>
+  충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br>
+  📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" style="color:#fff;">웨딩홀 위치 보기 (카카오맵)</a>
 </div>
 
 <div class="info">
@@ -206,61 +128,44 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
 </div>
 
 <script>
-function updateDday() {
-  const ddayEl = document.getElementById('dday');
-  const weddingDate = new Date('2025-10-26T14:30:00+09:00');
-  const now = new Date();
-  const diff = weddingDate - now;
-  const days = Math.floor(diff / (1000*60*60*24));
-  if(days <=0){
-    ddayEl.textContent = "🎉 오늘은 우리의 결혼식 날입니다! 🎉";
-  } else {
-    ddayEl.textContent = `결혼식까지 ${days}일 남았습니다.`;
-  }
+function updateDday(){
+  const dday=document.getElementById('dday');
+  const diff=new Date('2025-10-26T14:30:00+09:00')-new Date();
+  const days=Math.floor(diff/(1000*60*60*24));
+  dday.textContent=days<=0?"🎉 오늘은 우리의 결혼식 날입니다! 🎉":`결혼식까지 ${days}일 남았습니다.`;
 }
-setInterval(updateDday, 60000);
-updateDday();
+setInterval(updateDday,60000); updateDday();
 
-function toggleAccount() {
-  const el = document.getElementById('accountInfo');
-  const btn = document.querySelector('.toggle-account-btn');
-  if(el.style.display==='none'||el.style.display===''){
-    el.style.display='block';
-    btn.textContent = "💌 마음 전하실 곳 숨기기";
-  } else {
-    el.style.display='none';
-    btn.textContent = "💌 마음 전하실 곳 보기";
-  }
+function toggleAccount(){
+  const el=document.getElementById('accountInfo'), btn=document.querySelector('.toggle-account-btn');
+  if(el.style.display==='none'||el.style.display===''){ el.style.display='block'; btn.textContent="💌 마음 전하실 곳 숨기기"; }
+  else{ el.style.display='none'; btn.textContent="💌 마음 전하실 곳 보기"; }
 }
 
-function scrollToContent(){document.querySelector('.slideshow').scrollIntoView({behavior:'smooth'});}
+function scrollToContent(){ document.querySelector('.slideshow').scrollIntoView({behavior:'smooth'}); }
 
-function showToast(message){
-  const toast=document.createElement('div');toast.className='toast-message';toast.textContent=message;
-  document.body.appendChild(toast);
-  requestAnimationFrame(()=>{toast.style.opacity='1';});
-  setTimeout(()=>{toast.style.opacity='0'; toast.addEventListener('transitionend',()=>toast.remove());},3000);
+function showToast(msg){
+  const t=document.createElement('div'); t.className='toast-message'; t.textContent=msg;
+  document.body.appendChild(t); requestAnimationFrame(()=>{t.style.opacity='1';});
+  setTimeout(()=>{t.style.opacity='0'; t.addEventListener('transitionend',()=>t.remove());},3000);
 }
 
 function copyToClipboard(id){
-  const el=document.getElementById(id);
-  navigator.clipboard.writeText(el.textContent).then(()=>{showToast("계좌번호가 복사되었습니다. 감사합니다❤️");});
+  navigator.clipboard.writeText(document.getElementById(id).textContent)
+  .then(()=>{showToast("계좌번호가 복사되었습니다. 감사합니다❤️");});
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{
-
-  /* 슬라이드쇼 */
-  const slides=document.querySelectorAll('.slide');
-  const slideStatus=document.getElementById('slide-status');let current=0;
-  function showSlide(index){slides.forEach((s,i)=>s.classList.toggle('active',i===index));current=index;slideStatus.textContent=`${current+1} / ${slides.length}`;}
-  function nextSlide(){showSlide((current+1)%slides.length);}
+document.addEventListener('DOMContentLoaded',()=>{
+  const slides=document.querySelectorAll('.slide'); let current=0;
+  const slideStatus=document.getElementById('slide-status');
+  function showSlide(i){ slides.forEach((s,j)=>s.classList.toggle('active',i===j)); current=i; slideStatus.textContent=`${current+1} / ${slides.length}`; }
+  function nextSlide(){ showSlide((current+1)%slides.length); }
   showSlide(current);
+  let slideInterval=setInterval(nextSlide,3500); // 속도를 3.5초로 조정
   const slideshow=document.querySelector('.slideshow');
-  let slideInterval=setInterval(nextSlide,5000);
   slideshow.addEventListener('mouseenter',()=>clearInterval(slideInterval));
-  slideshow.addEventListener('mouseleave',()=>slideInterval=setInterval(nextSlide,5000));
+  slideshow.addEventListener('mouseleave',()=>slideInterval=setInterval(nextSlide,3500));
 
-  /* 메시지 타이핑 */
   const messageText=`황금빛 가을 햇살 아래
 두 사람이 사랑과 믿음으로
 새로운 길을 함께 걷기로 약속합니다.
@@ -268,19 +173,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
 살랑이는 바람에 실려 온 낙엽처럼
 따뜻한 축복을 전해 주세요❤️`;
   const msgEl=document.getElementById('message');
-  function typeWriter(element,text,speed=80){let i=0;function typing(){if(i<text.length){element.innerHTML+=(text[i]==='\n'?'<br/>':text[i]);i++;setTimeout(typing,speed);}}typing();}
-  if(document.fonts){document.fonts.ready.then(()=>{typeWriter(msgEl,messageText);});}else{typeWriter(msgEl,messageText);}
+  function typeWriter(el,text,speed=80){ let i=0; function typing(){ if(i<text.length){ el.innerHTML+=(text[i]==='\n'?'<br/>':text[i]); i++; setTimeout(typing,speed);} } typing(); }
+  if(document.fonts){ document.fonts.ready.then(()=>{typeWriter(msgEl,messageText);}); } else { typeWriter(msgEl,messageText); }
 
-  /* 떠다니는 하트/낙엽 */
   function createFloatingChar(){
     const wrapper=document.getElementById('dday-wrapper');
     const char=document.createElement('div'); char.className='floating-char';
-    char.textContent = Math.random()>0.5?'❤️':'🍂';
-    char.style.left = `${Math.random()*100}%`;
-    char.style.fontSize = `${14 + Math.random()*12}px`;
-    char.style.animationDuration = `${2 + Math.random()*2}s`;
-    wrapper.appendChild(char);
-    setTimeout(()=>char.remove(),4000);
+    char.textContent=Math.random()>0.5?'❤️':'🍂';
+    char.style.left=`${Math.random()*100}%`;
+    char.style.fontSize=`${14+Math.random()*12}px`;
+    char.style.animationDuration=`${2+Math.random()*2}s`;
+    wrapper.appendChild(char); setTimeout(()=>char.remove(),4000);
   }
   setInterval(createFloatingChar,700);
 });
