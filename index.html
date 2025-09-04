@@ -46,25 +46,12 @@ html, body {
 .hero-overlay h1 { font-size: 2.5rem; font-family: 'Nanum Pen Script', cursive; margin-bottom: 1rem; }
 .hero-overlay p { font-size: 1.2rem; font-family: 'Nanum Gothic', sans-serif; }
 
-/* header */
-header {
-  background: linear-gradient(135deg, #fbe3d1, #f8c29c, #e57b55);
-  border-radius: 1rem; box-shadow: 0 8px 20px rgba(229,123,85,0.3);
-  animation: slideDown 1.5s ease-out;
-  text-align: center;
-}
-
-/* header 텍스트 */
-header h1 { font-family: 'Nanum Gothic', sans-serif; font-weight: 600; color: #fff; font-size: clamp(1.8rem,6vw,2.5rem); margin-bottom: 0.5rem; }
-header h2 { font-family: 'Noto Sans KR', sans-serif; font-weight: 500; color: #fff; font-size: clamp(1.5rem,5vw,1.8rem); margin-bottom: 2rem; }
-
 /* 모든 주요 컨테이너 일관되게 적용 */
 .slideshow,
 .message,
 .info,
 #accountInfo,
-.date,
-header {
+.date {
   width: 90%;
   max-width: 600px;
   margin: 2rem auto;
@@ -127,24 +114,20 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
 
 /* keyframes */
 @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
-@keyframes slideDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
 @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
-@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
 @keyframes floatChar { 0%{transform:translateY(0) rotate(0deg);opacity:0;} 10%{opacity:1;} 100%{transform:translateY(-60px) rotate(360deg);opacity:0;} }
 
 /* responsive */
 @media(max-width:768px){
   .slideshow{height:300px;}
-  header h1{font-size:1.8rem;}
-  header h2,.date,.info{font-size:1.3rem;}
+  .date,.info{font-size:1.3rem;}
   #dday{font-size:1.8rem;}
   .copy-btn,.toggle-account-btn{font-size:1rem;}
   .message{font-size:1.4rem;padding:1.5rem 2rem;min-height:180px;}
 }
 @media(max-width:480px){
   .slideshow{height:200px;}
-  header h1{font-size:1.6rem;}
-  header h2,.date,.info{font-size:1.2rem;}
+  .date,.info{font-size:1.2rem;}
   #dday{font-size:1.6rem;}
   .copy-btn,.toggle-account-btn{font-size:0.95rem;}
   .copy-btn{margin-left:0;margin-top:0.5rem;}
@@ -168,30 +151,23 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
   </div>
 </section>
 
-<header>
-  <h1>이정주❤️장지이 결혼합니다.</h1>
-  <h2>두 사람의 마음을 고이 담아<br />소중한 분들을 초대합니다.</h2>
-</header>
-
 <div class="slideshow" aria-label="웨딩 사진 슬라이드쇼" tabindex="0">
   <img src="image1.jpg" class="slide active" alt="신랑신부 웨딩사진1" loading="eager" />
   <img src="image2.jpg" class="slide" alt="신랑신부 웨딩사진2" loading="lazy" />
-  <img src="image3.jpg" class="slide" alt="신랑신부 웨딩사진3" loading="lazy" />
-  <img src="image4.jpg" class="slide" alt="신랑신부 웨딩사진4" loading="lazy" />
-  <img src="image5.jpg" class="slide" alt="신랑신부 웨딩사진5" loading="lazy" />
-  <img src="image6.jpg" class="slide" alt="신랑신부 웨딩사진6" loading="lazy" />
-  <img src="image7.jpg" class="slide" alt="신랑신부 웨딩사진7" loading="lazy" />
-  <img src="image8.jpg" class="slide" alt="신랑신부 웨딩사진8" loading="lazy" />
-  <img src="image9.jpg" class="slide" alt="신랑신부 웨딩사진9" loading="lazy" />
-  <img src="image10.jpg" class="slide" alt="신랑신부 웨딩사진10" loading="lazy" />
-  <img src="image11.jpg" class="slide" alt="신랑신부 웨딩사진11" loading="lazy" />
-  <img src="image12.jpg" class="slide" alt="신랑신부 웨딩사진12" loading="lazy" />
-  <img src="image13.jpg" class="slide" alt="신랑신부 웨딩사진13" loading="lazy" />
-  <img src="image14.jpg" class="slide" alt="신랑신부 웨딩사진14" loading="lazy" />
-  <img src="image15.jpg" class="slide" alt="신랑신부 웨딩사진15" loading="lazy" />
-  <img src="image16.jpg" class="slide" alt="신랑신부 웨딩사진16" loading="lazy" />
-
-  <!-- 필요 시 이미지 16장까지 반복 -->
+<img src="image3.jpg" class="slide" alt="신랑신부 웨딩사진3" loading="lazy" /> 
+<img src="image4.jpg" class="slide" alt="신랑신부 웨딩사진4" loading="lazy" /> 
+<img src="image5.jpg" class="slide" alt="신랑신부 웨딩사진5" loading="lazy" /> 
+<img src="image6.jpg" class="slide" alt="신랑신부 웨딩사진6" loading="lazy" /> 
+<img src="image7.jpg" class="slide" alt="신랑신부 웨딩사진7" loading="lazy" /> 
+<img src="image8.jpg" class="slide" alt="신랑신부 웨딩사진8" loading="lazy" /> 
+<img src="image9.jpg" class="slide" alt="신랑신부 웨딩사진9" loading="lazy" /> 
+<img src="image10.jpg" class="slide" alt="신랑신부 웨딩사진10" loading="lazy" /> 
+<img src="image11.jpg" class="slide" alt="신랑신부 웨딩사진11" loading="lazy" /> 
+<img src="image12.jpg" class="slide" alt="신랑신부 웨딩사진12" loading="lazy" /> 
+<img src="image13.jpg" class="slide" alt="신랑신부 웨딩사진13" loading="lazy" /> 
+<img src="image14.jpg" class="slide" alt="신랑신부 웨딩사진14" loading="lazy" /> 
+<img src="image15.jpg" class="slide" alt="신랑신부 웨딩사진15" loading="lazy" /> 
+<img src="image16.jpg" class="slide" alt="신랑신부 웨딩사진16" loading="lazy" />
   <div class="sr-only" aria-live="polite" aria-atomic="true" id="slide-status">1 / 16</div>
 </div>
 
@@ -211,7 +187,7 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
   <button class="toggle-account-btn" onclick="toggleAccount()">💌 마음 전하실 곳 보기</button>
   <div id="accountInfo" aria-live="polite" aria-atomic="true">
     <div class="account-row">
-      <div class="name">신랑 이정주</div>
+      <div class="name">신랑 이정주(혼주 : 김명옥)</div>
       <div class="bank-account-copy">
         <span class="bank">카카오뱅크</span>
         <span id="groomAccount">3333-12-1138343</span>
@@ -219,7 +195,7 @@ button.toggle-account-btn:hover { background-color:#a45d23; }
       </div>
     </div>
     <div class="account-row">
-      <div class="name">신부 장지이</div>
+      <div class="name">신부 장지이(혼주 : 허수임)</div>
       <div class="bank-account-copy">
         <span class="bank">카카오뱅크</span>
         <span id="brideAccount">3333-27-1213847</span>
@@ -257,7 +233,7 @@ function toggleAccount() {
   }
 }
 
-function scrollToContent(){document.querySelector('header').scrollIntoView({behavior:'smooth'});}
+function scrollToContent(){document.querySelector('.slideshow').scrollIntoView({behavior:'smooth'});}
 
 function showToast(message){
   const toast=document.createElement('div');toast.className='toast-message';toast.textContent=message;
