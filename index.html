@@ -14,8 +14,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;500&display=swap');
 
 html, body {
-  margin:0; padding:0 1rem; font-family:'Noto Sans KR','Nanum Gothic',sans-serif;
-  background:#f3e9dc; color:#4b382a; display:flex; flex-direction:column; align-items:center; text-align:center;
+  margin:0; padding:0 1rem;
+  font-family:'Noto Sans KR','Nanum Gothic',sans-serif;
+  background:#f3e9dc; color:#4b382a;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
   padding-bottom:150px; line-height:1.6; overflow-x:hidden; scroll-behavior:smooth;
 }
 
@@ -25,9 +27,12 @@ html, body {
 
 .hero {
   position:relative; width:100vw; height:100vh; margin-left:-1rem; margin-right:-1rem;
-  background:url('image17.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; color:#fff; text-align:center;
+  background:url('image17.jpg') center/cover no-repeat;
+  display:flex; justify-content:center; align-items:center; color:#fff; text-align:center;
 }
-.hero-overlay { background:rgba(0,0,0,0.4); padding:1.5rem; border-radius:1rem; animation:fadeIn 2s ease-in-out; }
+.hero-overlay {
+  background:rgba(0,0,0,0.4); padding:1.5rem; border-radius:1rem; animation:fadeIn 2s ease-in-out;
+}
 .hero-overlay h1 { font-size:2rem; font-family:'Nanum Pen Script', cursive; margin-bottom:0.8rem; }
 .hero-overlay h2 { font-size:1rem; font-family:'Nanum Gothic', sans-serif; margin-bottom:0.5rem; }
 
@@ -36,17 +41,58 @@ html, body {
 .slide.active { opacity:1; z-index:1; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
-.message { font-family:'Nanum Pen Script', cursive; background:#f1d9a7; font-size:1.2rem; line-height:1.8; font-weight:400; padding:1.5rem 2rem; border-radius:1rem; color:#6a4b23; animation:fadeIn 2s ease-in; min-height:180px; white-space:pre-wrap; }
+/* 메시지 영역 글씨 키움 */
+.message {
+  font-family:'Nanum Pen Script', cursive;
+  background:#f1d9a7;
+  font-size:1.4rem; /* 글씨 키움 */
+  line-height:1.8;
+  font-weight:400;
+  padding:1.5rem 2rem;
+  border-radius:1rem;
+  color:#6a4b23;
+  animation:fadeIn 2s ease-in;
+  min-height:180px;
+  white-space:pre-wrap;
+}
 
-.info { font-size:0.95rem; line-height:1.6; background:#fff0e0; border-radius:1rem; padding:1.8rem; color:#5a4427; box-shadow:0 8px 24px rgba(209,127,58,0.3); font-family:'Noto Sans KR',sans-serif; font-weight:400; }
-#accountInfo { display:none; color:#444; background:#fff5e6; border-radius:0.75rem; padding:1.2rem; text-align:center; font-size:0.85rem; transition:all 0.4s ease; box-shadow:0 4px 12px rgba(209,127,58,0.2); }
+/* 계좌 정보 영역 글씨 작게 */
+.info {
+  font-size:0.9rem; /* 글씨 작게 */
+  line-height:1.6;
+  background:#fff0e0;
+  border-radius:1rem;
+  padding:1.8rem;
+  color:#5a4427;
+  box-shadow:0 8px 24px rgba(209,127,58,0.3);
+  font-family:'Noto Sans KR',sans-serif;
+  font-weight:400;
+}
+#accountInfo {
+  display:none;
+  color:#444;
+  background:#fff5e6;
+  border-radius:0.75rem;
+  padding:1.2rem;
+  text-align:center;
+  font-size:0.8rem; /* 글씨 작게 */
+  transition:all 0.4s ease;
+  box-shadow:0 4px 12px rgba(209,127,58,0.2);
+}
 #accountInfo .account-row { text-align:center; margin-bottom:0.8rem; }
 #accountInfo .name { font-weight:600; margin-bottom:0.3rem; }
 .bank-account-copy { display:flex; justify-content:center; align-items:center; gap:0.4rem; }
-.copy-btn, .toggle-account-btn { font-family:'Nanum Gothic',sans-serif; font-weight:600; border:none; cursor:pointer; }
-.copy-btn { padding:0.25rem 0.7rem; font-size:0.85rem; border-radius:0.3rem; background:#d17f3a; color:#fff; transition:0.3s; }
+
+.copy-btn, .toggle-account-btn {
+  font-family:'Nanum Gothic',sans-serif;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  font-size:0.8rem; /* 버튼 글씨 작게 */
+}
+.copy-btn { padding:0.25rem 0.7rem; border-radius:0.3rem; background:#d17f3a; color:#fff; transition:0.3s; }
 .copy-btn:hover { background:#a45d23; }
-.toggle-account-btn { width:100%; padding:0.65rem 1rem; font-size:0.95rem; background:#d17f3a; color:#fff; border-radius:0.5rem; font-weight:700; }
+.toggle-account-btn { width:100%; padding:0.65rem 1rem; border-radius:0.5rem; font-weight:700; background:#d17f3a; color:#fff; }
 .toggle-account-btn:hover { background:#a45d23; }
 
 .date { font-size:0.7rem; font-weight:600; color:#7f4f24; padding:0; animation:pulse 2s infinite ease-in-out; font-family:'Nanum Gothic',sans-serif; }
@@ -58,10 +104,18 @@ html, body {
 @keyframes floatChar { 0%{transform:translateY(0) rotate(0deg);opacity:0;} 10%{opacity:1;} 100%{transform:translateY(-60px) rotate(360deg);opacity:0;} }
 
 @media(max-width:768px){
-  .slideshow{height:250px;} .date,.info{font-size:1rem;} #dday{font-size:1.5rem;} .copy-btn,.toggle-account-btn{font-size:0.9rem;} .message{font-size:1.1rem;padding:1.2rem 1.5rem;min-height:150px;}
+  .slideshow{height:250px;}
+  .date,.info{font-size:1rem;}
+  #dday{font-size:1.5rem;}
+  .copy-btn,.toggle-account-btn{font-size:0.75rem;}
+  .message{font-size:1.25rem;padding:1.2rem 1.5rem;min-height:150px;}
 }
 @media(max-width:480px){
-  .slideshow{height:180px;} .date,.info{font-size:0.9rem;} #dday{font-size:1.3rem;} .copy-btn,.toggle-account-btn{font-size:0.85rem;} .message{font-size:1rem;padding:1rem 1.2rem;min-height:130px;}
+  .slideshow{height:180px;}
+  .date,.info{font-size:0.9rem;}
+  #dday{font-size:1.3rem;}
+  .copy-btn,.toggle-account-btn{font-size:0.7rem;}
+  .message{font-size:1.15rem;padding:1rem 1.2rem;min-height:130px;}
 }
 
 .toast-message { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#d17f3a; color:#fff; padding:8px 16px; border-radius:5px; z-index:1000; opacity:0; transition:0.3s; font-family:'Nanum Gothic',sans-serif; font-weight:600; white-space:nowrap; }
@@ -95,6 +149,7 @@ html, body {
   <img src="image14.jpg" class="slide" alt="신랑신부 웨딩사진14" loading="lazy" />
   <img src="image15.jpg" class="slide" alt="신랑신부 웨딩사진15" loading="lazy" />
   <img src="image16.jpg" class="slide" alt="신랑신부 웨딩사진16" loading="lazy" />
+
   <div class="sr-only" aria-live="polite" aria-atomic="true" id="slide-status">1 / 16</div>
 </div>
 
