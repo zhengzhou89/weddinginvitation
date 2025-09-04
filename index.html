@@ -45,7 +45,7 @@ html, body {
 .message {
   font-family:'Nanum Pen Script', cursive;
   background:#f1d9a7;
-  font-size:1.6rem; /* 글씨 키움 */
+  font-size:1.6rem;
   line-height:1.8;
   font-weight:400;
   padding:1.5rem 2rem;
@@ -58,7 +58,7 @@ html, body {
 
 /* 계좌 정보 영역 글씨 작게 */
 .info {
-  font-size:1.5rem; /* 글씨 작게 */
+  font-size:1.5rem;
   line-height:1.6;
   background:#fff0e0;
   border-radius:1rem;
@@ -75,7 +75,7 @@ html, body {
   border-radius:0.75rem;
   padding:1.2rem;
   text-align:center;
-  font-size:0.7rem; /* 글씨 작게 */
+  font-size:0.7rem;
   transition:all 0.4s ease;
   box-shadow:0 4px 12px rgba(209,127,58,0.2);
 }
@@ -88,7 +88,7 @@ html, body {
   font-weight:600;
   border:none;
   cursor:pointer;
-  font-size:0.9rem; /* 버튼 글씨 작게 */
+  font-size:0.9rem;
 }
 .copy-btn { padding:0.25rem 0.7rem; border-radius:0.3rem; background:#d17f3a; color:#fff; transition:0.3s; }
 .copy-btn:hover { background:#a45d23; }
@@ -160,7 +160,7 @@ html, body {
 <div class="date">
   2025.10.26.(일) PM 2:30<br>
   충주 파라다이스 웨딩홀, 드레스가든(야외홀)<br>
-  📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" style="color:##FFB300;">웨딩홀 위치 보기 (카카오맵)</a>
+  📍 <a href="https://map.kakao.com/?itemId=10894186" target="_blank" style="color:#FFB300;">웨딩홀 위치 보기 (카카오맵)</a>
 </div>
 
 <div class="info">
@@ -220,9 +220,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   function nextSlide(){ showSlide((current+1)%slides.length); }
   showSlide(current);
   let slideInterval=setInterval(nextSlide,3500);
+
   const slideshow=document.querySelector('.slideshow');
-  slideshow.addEventListener('mouseenter',()=>clearInterval(slideInterval));
-  slideshow.addEventListener('mouseleave',()=>slideInterval=setInterval(nextSlide,3500));
+  const isTouchDevice=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+
+  if(!isTouchDevice){
+    slideshow.addEventListener('mouseenter',()=>clearInterval(slideInterval));
+    slideshow.addEventListener('mouseleave',()=>slideInterval=setInterval(nextSlide,3500));
+  }
 
   const messageText=`황금빛 가을 햇살 아래
 두 사람이 사랑과 믿음으로
