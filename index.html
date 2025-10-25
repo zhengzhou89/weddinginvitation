@@ -41,7 +41,6 @@ html, body {
 .slide.active { opacity:1; z-index:1; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
-/* 메시지 영역 글씨 키움 */
 .message {
   font-family:'Nanum Pen Script', cursive;
   background:#f1d9a7;
@@ -56,7 +55,6 @@ html, body {
   white-space:pre-wrap;
 }
 
-/* 계좌 정보 영역 글씨 작게 */
 .info {
   font-size:1.5rem;
   line-height:1.6;
@@ -187,8 +185,8 @@ html, body {
       <div class="name">허수임(신부측 혼주)</div>
       <div class="bank-account-copy">
         <span class="bank">농협</span>
-        <span id="groomAccount">961-022054-20</span>
-        <button class="copy-btn" onclick="copyToClipboard('groomAccount')">복사</button>
+        <span id="groomParentAccount">961-022054-20</span>
+        <button class="copy-btn" onclick="copyToClipboard('groomParentAccount')">복사</button>
       </div>
     </div>
   </div>
@@ -199,14 +197,10 @@ function updateDday() {
   const dday = document.getElementById('dday');
   const today = new Date();
   const wedding = new Date('2025-10-26');
-
-  // 시각 무시, 날짜만 비교
   today.setHours(0,0,0,0);
   wedding.setHours(0,0,0,0);
-
   const diff = wedding - today;
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
   dday.textContent =
     days <= 0
       ? "🎉 오늘은 우리의 결혼식 날이에요~! 🎉"
@@ -233,6 +227,8 @@ function copyToClipboard(id){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
+  updateDday(); // ✅ D-day 표시 실행 추가
+
   const slides=document.querySelectorAll('.slide'); let current=0;
   const slideStatus=document.getElementById('slide-status');
   function showSlide(i){ slides.forEach((s,j)=>s.classList.toggle('active',i===j)); current=i; slideStatus.textContent=`${current+1} / ${slides.length}`; }
@@ -271,5 +267,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 </body>
-
 </html>
