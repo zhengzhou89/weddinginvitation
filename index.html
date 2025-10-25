@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>이정주❤️장지이 결혼합니다</title>
+<title>이정❤️장지이 결혼합니다</title>
 <meta name="description" content="이정주와 장지이의 결혼식에 초대합니다. 2025년 10월 26일 오후 2시 30분, 충주 파라다이스 웨딩홀에서 만나요!" />
 <meta property="og:title" content="이정주❤️장지이 결혼합니다." />
 <meta property="og:description" content="2025년 10월 26일 오후 2시 30분, 충주 파라다이스 웨딩홀에서 만나요!" />
@@ -93,7 +93,15 @@ html, body {
 .toggle-account-btn { width:100%; padding:0.65rem 1rem; border-radius:0.5rem; font-weight:700; background:#d17f3a; color:#fff; }
 .toggle-account-btn:hover { background:#a45d23; }
 
-.date { font-size:0.7rem; font-weight:600; color:#7f4f24; padding:0; animation:pulse 2s infinite ease-in-out; font-family:'Nanum Gothic',sans-serif; }
+/* ✅ 디데이와 날짜 폰트/색상 통일 */
+.date, #dday {
+  font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b382a;
+  padding: 0;
+  animation: pulse 2s infinite ease-in-out;
+}
 
 .floating-char { position:absolute; font-size:14px; opacity:0; pointer-events:none; animation:floatChar 3s linear forwards; }
 
@@ -103,15 +111,13 @@ html, body {
 
 @media(max-width:768px){
   .slideshow{height:250px;}
-  .date,.info{font-size:1rem;}
-  #dday{font-size:1.5rem;}
+  .date{font-size:1rem;}
   .copy-btn,.toggle-account-btn{font-size:0.75rem;}
   .message{font-size:1.25rem;padding:1.2rem 1.5rem;min-height:150px;}
 }
 @media(max-width:480px){
   .slideshow{height:180px;}
-  .date,.info{font-size:0.9rem;}
-  #dday{font-size:1.3rem;}
+  .date{font-size:0.9rem;}
   .copy-btn,.toggle-account-btn{font-size:0.7rem;}
   .message{font-size:1.15rem;padding:1rem 1.2rem;min-height:130px;}
 }
@@ -227,7 +233,7 @@ function copyToClipboard(id){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  updateDday(); // ✅ D-day 표시 실행 추가
+  updateDday();
 
   const slides=document.querySelectorAll('.slide'); let current=0;
   const slideStatus=document.getElementById('slide-status');
