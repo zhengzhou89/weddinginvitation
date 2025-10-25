@@ -195,13 +195,23 @@ html, body {
 </div>
 
 <script>
-function updateDday(){
-  const dday=document.getElementById('dday');
-  const diff=new Date('2025-10-26T14:30:00+09:00')-new Date();
-  const days=Math.floor(diff/(1000*60*60*24));
-  dday.textContent=days<=0?"🎉 오늘은 우리의 결혼식 날이에요~! 🎉":`🎉 결혼식까지 ${days}일 남았어요! 🎉`;
+function updateDday() {
+  const dday = document.getElementById('dday');
+  const today = new Date();
+  const wedding = new Date('2025-10-26');
+
+  // 시각 무시, 날짜만 비교
+  today.setHours(0,0,0,0);
+  wedding.setHours(0,0,0,0);
+
+  const diff = wedding - today;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  dday.textContent =
+    days <= 0
+      ? "🎉 오늘은 우리의 결혼식 날이에요~! 🎉"
+      : `🎉 결혼식까지 ${days}일 남았어요! 🎉`;
 }
-setInterval(updateDday,60000); updateDday();
 
 function toggleAccount(){
   const el=document.getElementById('accountInfo'), btn=document.querySelector('.toggle-account-btn');
@@ -261,4 +271,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 </body>
+
 </html>
